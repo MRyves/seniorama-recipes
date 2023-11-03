@@ -10,15 +10,24 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
-import {RouterLink, RouterModule, RouterOutlet} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatCardModule} from "@angular/material/card";
+import { CreateFormComponent } from './components/create-form/create-form.component';
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatTableModule} from "@angular/material/table";
+import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
+import { IngredientTableComponent } from './components/ingredient-table/ingredient-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreatePageComponent,
-    AppLayoutComponent
+    AppLayoutComponent,
+    CreateFormComponent,
+    IngredientFormComponent,
+    IngredientTableComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +41,9 @@ import {MatCardModule} from "@angular/material/card";
     RouterLink,
     MatCardModule,
     RouterOutlet,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

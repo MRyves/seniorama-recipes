@@ -1,0 +1,20 @@
+<div class="flex flex-row gap-2">
+  <mat-form-field>
+    <mat-label>Menge</mat-label>
+    <input type="number" [formControl]="ingredientAmount" matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Einheit</mat-label>
+    <input type="string" [formControl]="ingredientUnit" matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name / Beschreibung</mat-label>
+    <input type="string" [formControl]="ingredientName" matInput>
+    <mat-error *ngIf="ingredientName.invalid"></mat-error>
+  </mat-form-field>
+  <div class="pt-2">
+    <button mat-mini-fab color="primary" [disabled]="ingredientName.invalid" (click)="add()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

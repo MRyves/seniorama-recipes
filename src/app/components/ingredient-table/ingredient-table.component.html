@@ -1,0 +1,30 @@
+<mat-table [dataSource]="ingredients">
+  <ng-container matColumnDef="amount">
+    <mat-header-cell *matHeaderCellDef>Menge</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.amount}} </mat-cell>
+  </ng-container>
+
+  <!-- Age Definition -->
+  <ng-container matColumnDef="unit">
+    <mat-header-cell *matHeaderCellDef>Einheit</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.unit}} </mat-cell>
+  </ng-container>
+
+  <!-- Title Definition -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let i = index">
+      <button mat-icon-button color="warn" (click)="remove(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+  <!-- Header and Row Declarations -->
+  <mat-header-row *matHeaderRowDef="['amount', 'unit', 'name', 'actions']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['amount', 'unit', 'name', 'actions']; let i = index"></mat-row>
+</mat-table>
