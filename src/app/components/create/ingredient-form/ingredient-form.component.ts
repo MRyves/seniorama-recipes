@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {RecipeIngredient} from "../../models/RecipeIngredient";
+import {RecipeIngredient} from "../../../models/RecipeIngredient";
 
 @Component({
   selector: 'app-ingredient-form',

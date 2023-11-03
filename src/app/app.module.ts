@@ -13,12 +13,13 @@ import {MatListModule} from "@angular/material/list";
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatCardModule} from "@angular/material/card";
-import { CreateFormComponent } from './components/create-form/create-form.component';
+import { CreateFormComponent } from './components/create/create-form/create-form.component';
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
-import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
-import { IngredientTableComponent } from './components/ingredient-table/ingredient-table.component';
+import { IngredientFormComponent } from './components/create/ingredient-form/ingredient-form.component';
+import { IngredientTableComponent } from './components/create/ingredient-table/ingredient-table.component';
+import { SubRecipeCreateFormComponent } from './components/create/sub-recipe-create-form/sub-recipe-create-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { IngredientTableComponent } from './components/ingredient-table/ingredie
     AppLayoutComponent,
     CreateFormComponent,
     IngredientFormComponent,
-    IngredientTableComponent
+    IngredientTableComponent,
+    SubRecipeCreateFormComponent
   ],
   imports: [
     BrowserModule,

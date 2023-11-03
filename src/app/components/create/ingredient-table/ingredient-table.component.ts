@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {RecipeIngredient} from "../../models/RecipeIngredient";
+import {RecipeIngredient} from "../../../models/RecipeIngredient";
 
 @Component({
   selector: 'app-ingredient-table',
