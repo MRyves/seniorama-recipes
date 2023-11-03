@@ -1,0 +1,14 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{subRecipe.name}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <button mat-icon-button>
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <app-ingredient-table [ingredients]="subRecipe.ingredients"
+                        (removeIngredient)="removeIngredient($event)"></app-ingredient-table>
+</mat-expansion-panel>

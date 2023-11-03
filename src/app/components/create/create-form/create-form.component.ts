@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {RecipeIngredient} from "../../../models/RecipeIngredient";
+import {SubRecipe} from "../../../models/SubRecipe";
 
 @Component({
   selector: 'app-create-form',
@@ -18,6 +19,7 @@ export class CreateFormComponent {
 
 
   ingredients: RecipeIngredient[] = [];
+  subRecipes: SubRecipe[] = [];
 
 
   addIngredient(ingredient: RecipeIngredient) {
@@ -32,5 +34,9 @@ export class CreateFormComponent {
       this.ingredients.splice(index, 1);
       this.ingredients = [...this.ingredients];
     }
+  }
+
+  addSubRecipe(subRecipe: SubRecipe) {
+    this.subRecipes = [...this.subRecipes, subRecipe];
   }
 }
