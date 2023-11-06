@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {RecipeIngredient} from "../../../models/RecipeIngredient";
 
 @Component({
@@ -9,7 +9,7 @@ import {RecipeIngredient} from "../../../models/RecipeIngredient";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IngredientTableComponent {
+export class IngredientTableComponent implements OnInit {
 
   @Input({required: true})
   ingredients!: RecipeIngredient[];
@@ -17,7 +17,16 @@ export class IngredientTableComponent {
   @Output()
   removeIngredient = new EventEmitter<number>();
 
-  remove(index: number){
+  displayedColumns = ['amount', 'unit', 'name'];
+
+
+  remove(index: number) {
     this.removeIngredient.emit(index);
+  }
+
+  ngOnInit(): void {
+    if (this.removeIngredient.observed) {
+      this.displayedColumns.push('actions');
+    }
   }
 }

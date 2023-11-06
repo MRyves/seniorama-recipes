@@ -26,11 +26,11 @@
     </mat-cell>
   </ng-container>
   <!-- Header and Row Declarations -->
-  <mat-header-row *matHeaderRowDef="['amount', 'unit', 'name', 'actions']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['amount', 'unit', 'name', 'actions']; let i = index"></mat-row>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
 
   <!--suppress AngularUndefinedTag -->
   <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">Noch keine Zutaten hinzugefügt</td>
+    <td class="mat-cell" [attr.colspan]="displayedColumns.length">Noch keine Zutaten hinzugefügt</td>
   </tr>
 </mat-table>

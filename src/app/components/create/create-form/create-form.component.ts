@@ -43,7 +43,9 @@ export class CreateFormComponent {
     const dialogRef = this.dialog.open(SubRecipeCreateDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.subRecipes = [...this.subRecipes, result];
+      if (result) {
+        this.subRecipes = [...this.subRecipes, result];
+      }
     })
   }
 
