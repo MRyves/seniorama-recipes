@@ -12,7 +12,9 @@ export class SubRecipeAccordionComponent {
   subRecipes!: SubRecipe[];
 
   @Output()
-  addSubRecipe = new EventEmitter<SubRecipe>();
+  removeSubRecipe = new EventEmitter<number>();
 
-
+  onRemoveSubRecipe(i: number) {
+    this.removeSubRecipe.emit(i);
+  }
 }

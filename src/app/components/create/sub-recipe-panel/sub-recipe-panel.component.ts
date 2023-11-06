@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {SubRecipe} from "../../../models/SubRecipe";
 
 @Component({
@@ -7,10 +7,19 @@ import {SubRecipe} from "../../../models/SubRecipe";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubRecipePanelComponent {
+
+  @Output()
+  removeRecipe = new EventEmitter();
+
   @Input({required: true})
   subRecipe!: SubRecipe;
 
   removeIngredient(index: number) {
 
+  }
+
+  removeSubRecipe($event: MouseEvent) {
+    $event.stopPropagation();
+    this.removeRecipe.emit();
   }
 }

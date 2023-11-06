@@ -20,8 +20,14 @@
   <h3 class="mat-subtitle-1">Zutaten hinzufügen:</h3>
   <app-ingredient-form (addIngredient)="addIngredient($event)"></app-ingredient-form>
 
-  <app-ingredient-table class="pb-3l" [ingredients]="ingredients" (removeIngredient)="removeIngredient($event)"></app-ingredient-table>
+  <app-ingredient-table class="pb-3l" [ingredients]="ingredients"
+                        (removeIngredient)="removeIngredient($event)"></app-ingredient-table>
 
-  <h3 class="mat-subtitle-1">Teil-Rezepte: </h3>
-  <app-sub-recipe-accordion [subRecipes]="subRecipes" (addSubRecipe)="addSubRecipe($event)"></app-sub-recipe-accordion>
+  <mat-divider class="p-3"></mat-divider>
+
+  <div class="flex flex-row justify-between">
+    <h3 class="mat-subtitle-1">Teil-Rezepte: </h3>
+    <button mat-flat-button color="primary" (click)="openSubRecipeDialog()" >Hinzufügen</button>
+  </div>
+  <app-sub-recipe-accordion [subRecipes]="subRecipes" (removeSubRecipe)="removeSubRecipe($event)"></app-sub-recipe-accordion>
 </div>

@@ -19,10 +19,11 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import { IngredientFormComponent } from './components/create/ingredient-form/ingredient-form.component';
 import { IngredientTableComponent } from './components/create/ingredient-table/ingredient-table.component';
-import { SubRecipeCreatePanelComponent } from './components/create/sub-recipe-create-panel/sub-recipe-create-panel.component';
+import { SubRecipeCreateDialogComponent } from './components/create/sub-recipe-create-dialog/sub-recipe-create-dialog.component';
 import { SubRecipeAccordionComponent } from './components/create/sub-recipe-accordion/sub-recipe-accordion.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { SubRecipePanelComponent } from './components/create/sub-recipe-panel/sub-recipe-panel.component';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { SubRecipePanelComponent } from './components/create/sub-recipe-panel/su
     CreateFormComponent,
     IngredientFormComponent,
     IngredientTableComponent,
-    SubRecipeCreatePanelComponent,
+    SubRecipeCreateDialogComponent,
     SubRecipeAccordionComponent,
     SubRecipePanelComponent
   ],
@@ -52,6 +53,7 @@ import { SubRecipePanelComponent } from './components/create/sub-recipe-panel/su
     ReactiveFormsModule,
     MatTableModule,
     MatExpansionModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

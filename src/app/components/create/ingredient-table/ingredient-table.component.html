@@ -1,4 +1,5 @@
 <mat-table [dataSource]="ingredients">
+
   <ng-container matColumnDef="amount">
     <mat-header-cell *matHeaderCellDef>Menge</mat-header-cell>
     <mat-cell *matCellDef="let row"> {{row.amount}} </mat-cell>
@@ -27,4 +28,9 @@
   <!-- Header and Row Declarations -->
   <mat-header-row *matHeaderRowDef="['amount', 'unit', 'name', 'actions']"></mat-header-row>
   <mat-row *matRowDef="let row; columns: ['amount', 'unit', 'name', 'actions']; let i = index"></mat-row>
+
+  <!--suppress AngularUndefinedTag -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">Noch keine Zutaten hinzugefügt</td>
+  </tr>
 </mat-table>

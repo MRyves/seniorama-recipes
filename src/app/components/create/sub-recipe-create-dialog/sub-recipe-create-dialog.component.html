@@ -1,0 +1,21 @@
+<div class="p-2 bg-gray-300 flex flex-row justify-between items-center">
+  <h3 class="mat-headline-6 !m-0 block">
+    Neues Teil-Rezept hinzufügen
+  </h3>
+  <div class="flex gap-0.5">
+    <button mat-flat-button color="primary" (click)="add()">Speichern</button>
+    <button mat-flat-button color="warn" (click)="close()">Abbrechen</button>
+  </div>
+</div>
+<div class="p-3">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="text" [formControl]="name" required matInput>
+    <mat-error *ngIf="name.invalid">Das Rezept muss ein Namen haben!</mat-error>
+  </mat-form-field>
+
+  <h3 class="mat-subtitle-1">Zutaten hinzufügen:</h3>
+  <app-ingredient-form (addIngredient)="addIngredient($event)"></app-ingredient-form>
+  <app-ingredient-table [ingredients]="ingredients"
+                        (removeIngredient)="removeIngredient($event)"></app-ingredient-table>
+</div>

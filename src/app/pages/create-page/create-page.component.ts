@@ -4,7 +4,6 @@
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreatePageComponent implements OnInit{
 

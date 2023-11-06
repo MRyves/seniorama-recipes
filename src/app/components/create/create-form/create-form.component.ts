@@ -1,7 +1,9 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {RecipeIngredient} from "../../../models/RecipeIngredient";
 import {SubRecipe} from "../../../models/SubRecipe";
+import {MatDialog} from "@angular/material/dialog";
+import {SubRecipeCreateDialogComponent} from "../sub-recipe-create-dialog/sub-recipe-create-dialog.component";
 
 @Component({
   selector: 'app-create-form',
@@ -9,7 +11,6 @@ import {SubRecipe} from "../../../models/SubRecipe";
   styleUrls: [
     './create-form.component.css'
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateFormComponent {
 
@@ -21,14 +22,15 @@ export class CreateFormComponent {
   ingredients: RecipeIngredient[] = [];
   subRecipes: SubRecipe[] = [];
 
+  constructor(public dialog: MatDialog) {
+  }
 
   addIngredient(ingredient: RecipeIngredient) {
     this.ingredients = [...this.ingredients, ingredient];
   }
 
   removeIngredient(index: number) {
-    console.log('Ingredients: ', index);
-    if(this.ingredients.length === 1){
+    if (this.ingredients.length <= 1) {
       this.ingredients = [];
     } else {
       this.ingredients.splice(index, 1);
@@ -36,7 +38,22 @@ export class CreateFormComponent {
     }
   }
 
-  addSubRecipe(subRecipe: SubRecipe) {
-    this.subRecipes = [...this.subRecipes, subRecipe];
+
+  openSubRecipeDialog() {
+    const dialogRef = this.dialog.open(SubRecipeCreateDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.subRecipes = [...this.subRecipes, result];
+    })
+  }
+
+  removeSubRecipe(index: number) {
+    console.log("Deleting index: ", index);
+    if (this.subRecipes.length <= 1) {
+      this.subRecipes = [];
+    } else {
+      this.subRecipes.splice(index, 1)
+      this.subRecipes = [...this.subRecipes];
+    }
   }
 }

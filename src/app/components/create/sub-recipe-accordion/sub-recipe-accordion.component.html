@@ -1,4 +1,4 @@
-<mat-accordion displayMode="flat">
-  <app-sub-recipe-panel *ngFor="let subRecipe of subRecipes" [subRecipe]="subRecipe"></app-sub-recipe-panel>
-  <app-sub-recipe-create-panel (addSubRecipe)="addSubRecipe.emit($event)"></app-sub-recipe-create-panel>
+<mat-accordion>
+  <app-sub-recipe-panel *ngFor="let subRecipe of subRecipes; let i = index" [subRecipe]="subRecipe"
+                        (removeRecipe)="onRemoveSubRecipe(i)"></app-sub-recipe-panel>
 </mat-accordion>
