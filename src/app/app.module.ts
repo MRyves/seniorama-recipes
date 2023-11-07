@@ -29,6 +29,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatTabsModule} from "@angular/material/tabs";
 import {NgxEditorModule} from "ngx-editor";
 import { MethodEditorComponent } from './components/create/method-editor/method-editor.component';
+import { ExtrasFormComponent } from './components/create/extras-form/extras-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MethodEditorComponent } from './components/create/method-editor/method-
     SubRecipeCreateDialogComponent,
     SubRecipeAccordionComponent,
     SubRecipePanelComponent,
-    MethodEditorComponent
+    MethodEditorComponent,
+    ExtrasFormComponent
   ],
   imports: [
     BrowserModule,

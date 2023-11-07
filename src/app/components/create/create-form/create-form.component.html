@@ -27,7 +27,7 @@
 
   <div class="flex flex-row justify-between">
     <h3 class="mat-subtitle-1">Teil-Rezepte: </h3>
-    <button mat-flat-button color="primary" (click)="openSubRecipeDialog()" >Hinzufügen</button>
+    <button mat-stroked-button color="primary" (click)="openSubRecipeDialog()">Hinzufügen</button>
   </div>
   <app-sub-recipe-accordion [subRecipes]="subRecipes" (removeSubRecipe)="removeSubRecipe($event)"></app-sub-recipe-accordion>
 </div>
