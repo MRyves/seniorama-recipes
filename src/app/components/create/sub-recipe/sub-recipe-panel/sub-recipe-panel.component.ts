@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {SubRecipe} from "../../../models/SubRecipe";
+import {SubRecipe} from "../../../../models/SubRecipe";
 
 @Component({
   selector: 'app-sub-recipe-panel',

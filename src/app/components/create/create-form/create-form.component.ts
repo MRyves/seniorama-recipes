@@ -3,7 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {RecipeIngredient} from "../../../models/RecipeIngredient";
 import {SubRecipe} from "../../../models/SubRecipe";
 import {MatDialog} from "@angular/material/dialog";
-import {SubRecipeCreateDialogComponent} from "../sub-recipe-create-dialog/sub-recipe-create-dialog.component";
+import {SubRecipeCreateDialogComponent} from "../sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component";
 
 @Component({
   selector: 'app-create-form',

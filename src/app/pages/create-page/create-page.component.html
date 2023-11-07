@@ -1,8 +1,13 @@
-<mat-tab-group dynamicHeight>
-  <mat-tab label="Zutaten" bodyClass="h-full">
-    <app-create-form></app-create-form>
-  </mat-tab>
-  <mat-tab label="Zubereitung" bodyClass="h-full">
-    <h3>Test</h3>
-  </mat-tab>
-</mat-tab-group>
+<div class="h-full flex flex-col justify-between">
+  <mat-tab-group class="mat-tab-fill-height h-full" dynamicHeight>
+    <mat-tab label="Zutaten">
+      <app-create-form></app-create-form>
+    </mat-tab>
+    <mat-tab label="Zubereitung" bodyClass="pb-3">
+      <app-method-editor></app-method-editor>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="basis-1/12">
+    <button class="w-full" mat-raised-button color="accent">Seichern</button>
+  </div>
+</div>

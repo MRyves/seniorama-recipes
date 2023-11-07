@@ -15,18 +15,20 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatCardModule} from "@angular/material/card";
 import {CreateFormComponent} from './components/create/create-form/create-form.component';
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {IngredientFormComponent} from './components/create/ingredient-form/ingredient-form.component';
 import {IngredientTableComponent} from './components/create/ingredient-table/ingredient-table.component';
 import {
   SubRecipeCreateDialogComponent
-} from './components/create/sub-recipe-create-dialog/sub-recipe-create-dialog.component';
-import {SubRecipeAccordionComponent} from './components/create/sub-recipe-accordion/sub-recipe-accordion.component';
+} from './components/create/sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component';
+import {SubRecipeAccordionComponent} from './components/create/sub-recipe/sub-recipe-accordion/sub-recipe-accordion.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import {SubRecipePanelComponent} from './components/create/sub-recipe-panel/sub-recipe-panel.component';
+import {SubRecipePanelComponent} from './components/create/sub-recipe/sub-recipe-panel/sub-recipe-panel.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTabsModule} from "@angular/material/tabs";
+import {NgxEditorModule} from "ngx-editor";
+import { MethodEditorComponent } from './components/create/method-editor/method-editor.component';
 
 @NgModule({
   declarations: [
@@ -38,26 +40,31 @@ import {MatTabsModule} from "@angular/material/tabs";
     IngredientTableComponent,
     SubRecipeCreateDialogComponent,
     SubRecipeAccordionComponent,
-    SubRecipePanelComponent
+    SubRecipePanelComponent,
+    MethodEditorComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    RouterLink,
+    ReactiveFormsModule,
+    RouterOutlet,
+    NgxEditorModule,
+
+    // Angular Material
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    RouterLink,
     MatCardModule,
-    RouterOutlet,
     MatInputModule,
-    ReactiveFormsModule,
     MatTableModule,
     MatExpansionModule,
     MatDialogModule,
     MatTabsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

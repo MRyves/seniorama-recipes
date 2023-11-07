@@ -4,6 +4,7 @@
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
+  styles: [':host {height: 100%; display: block}']
 })
 export class CreatePageComponent implements OnInit{
 

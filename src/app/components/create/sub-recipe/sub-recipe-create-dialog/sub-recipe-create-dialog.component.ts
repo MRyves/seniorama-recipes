@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
-import {RecipeIngredient} from "../../../models/RecipeIngredient";
+import {RecipeIngredient} from "../../../../models/RecipeIngredient";
 import {FormControl, Validators} from "@angular/forms";
-import {SubRecipe} from "../../../models/SubRecipe";
+import {SubRecipe} from "../../../../models/SubRecipe";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {SubRecipeAccordionComponent} from "../sub-recipe-accordion/sub-recipe-accordion.component";
 
