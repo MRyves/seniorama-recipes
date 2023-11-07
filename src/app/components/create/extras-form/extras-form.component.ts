@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl} from "@angular/forms";
+import RecipeModel from "../../../models/Recipe.model";
 
 @Component({
   selector: 'app-extras-form',
@@ -8,8 +9,14 @@ import {FormControl} from "@angular/forms";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExtrasFormComponent {
-  serveInput = new FormControl('');
-  commentInput = new FormControl('');
-  plateInput = new FormControl('');
-  timeInput = new FormControl('');
+
+  @Input({required: true})
+  recipe!: RecipeModel;
+
+  @Output()
+  recipeChange = new EventEmitter<Partial<RecipeModel>>();
+
+  update(key: string, value: string){
+    this.recipeChange.emit({[key]: value});
+  }
 }

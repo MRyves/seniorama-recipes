@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -22,14 +22,23 @@ import {IngredientTableComponent} from './components/create/ingredient-table/ing
 import {
   SubRecipeCreateDialogComponent
 } from './components/create/sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component';
-import {SubRecipeAccordionComponent} from './components/create/sub-recipe/sub-recipe-accordion/sub-recipe-accordion.component';
+import {
+  SubRecipeAccordionComponent
+} from './components/create/sub-recipe/sub-recipe-accordion/sub-recipe-accordion.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {SubRecipePanelComponent} from './components/create/sub-recipe/sub-recipe-panel/sub-recipe-panel.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTabsModule} from "@angular/material/tabs";
 import {NgxEditorModule} from "ngx-editor";
-import { MethodEditorComponent } from './components/create/method-editor/method-editor.component';
-import { ExtrasFormComponent } from './components/create/extras-form/extras-form.component';
+import {MethodEditorComponent} from './components/create/method-editor/method-editor.component';
+import {ExtrasFormComponent} from './components/create/extras-form/extras-form.component';
+import {StoreModule} from '@ngrx/store';
+import {AutoChipsComponent} from "./components/ui/auto-chips/auto-chips.component";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatSelectModule} from "@angular/material/select";
+import {recipeFormReducer} from "./store/recipeForm/recipeForm.reducer";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -43,7 +52,8 @@ import { ExtrasFormComponent } from './components/create/extras-form/extras-form
     SubRecipeAccordionComponent,
     SubRecipePanelComponent,
     MethodEditorComponent,
-    ExtrasFormComponent
+    ExtrasFormComponent,
+    AutoChipsComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +77,11 @@ import { ExtrasFormComponent } from './components/create/extras-form/extras-form
     MatDialogModule,
     MatTabsModule,
     FormsModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    StoreModule.forRoot({recipeForm: recipeFormReducer}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent]

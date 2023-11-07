@@ -1,9 +1,41 @@
-import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {RecipeIngredient} from "../../../models/RecipeIngredient";
-import {SubRecipe} from "../../../models/SubRecipe";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {RecipeIngredientModel} from "../../../models/RecipeIngredient.model";
+import {SubRecipeModel} from "../../../models/SubRecipe.model";
 import {MatDialog} from "@angular/material/dialog";
-import {SubRecipeCreateDialogComponent} from "../sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component";
+import {
+  SubRecipeCreateDialogComponent
+} from "../sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component";
+import RecipeModel, {Allergen} from "../../../models/Recipe.model";
+
+const ALL_TAGS = [
+  'Vorspeisen',
+  'Salate',
+  'Suppen',
+  'Beilagen',
+  'Fleisch',
+  'Fisch',
+  'Vegi',
+  'Pasta',
+  'Dessert',
+  'Abendessen',
+];
+
+const ALL_ALLERGENS: Allergen[] = [
+  "Eier",
+  "Erdnüsse",
+  "Fische",
+  "Gluten",
+  "Hausgrillpulver",
+  "Krebstiere",
+  "Laktose",
+  "Lupinen",
+  "Nüsse",
+  "Sellerie",
+  "Senf",
+  "Sesam",
+  "Soja",
+  "Sulfite",
+  "Weichtiere"];
 
 @Component({
   selector: 'app-create-form',
@@ -14,28 +46,28 @@ import {SubRecipeCreateDialogComponent} from "../sub-recipe/sub-recipe-create-di
 })
 export class CreateFormComponent {
 
-  name = new FormControl('', Validators.required);
-  amount = new FormControl(null, Validators.required);
-  unit = new FormControl('', Validators.required);
+  @Input({required: true})
+  recipe!: RecipeModel;
 
+  @Output()
+  recipeChange = new EventEmitter<Partial<RecipeModel>>();
 
-  ingredients: RecipeIngredient[] = [];
-  subRecipes: SubRecipe[] = [];
+  readonly allTags = ALL_TAGS;
+  readonly allAllergens: Allergen[] = ALL_ALLERGENS;
 
   constructor(public dialog: MatDialog) {
   }
 
-  addIngredient(ingredient: RecipeIngredient) {
-    this.ingredients = [...this.ingredients, ingredient];
+  addIngredient(ingredient: RecipeIngredientModel) {
+    this.recipeChange.emit({ingredients: [...this.recipe.ingredients, ingredient]});
   }
 
   removeIngredient(index: number) {
-    if (this.ingredients.length <= 1) {
-      this.ingredients = [];
-    } else {
-      this.ingredients.splice(index, 1);
-      this.ingredients = [...this.ingredients];
+    if (this.recipe.ingredients.length <= 1) {
+      this.recipeChange.emit({ingredients: []});
+      return;
     }
+    this.recipeChange.emit({ingredients: [...this.recipe.ingredients.filter((_, i) => i !== index)]});
   }
 
 
@@ -44,18 +76,35 @@ export class CreateFormComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.subRecipes = [...this.subRecipes, result];
+        this.recipeChange.emit({subRecipe: [...this.recipe.subRecipe, result]})
       }
     })
   }
 
   removeSubRecipe(index: number) {
-    console.log("Deleting index: ", index);
-    if (this.subRecipes.length <= 1) {
-      this.subRecipes = [];
+    if (this.recipe.subRecipe.length <= 1) {
+      this.recipeChange.emit({subRecipe: []});
     } else {
-      this.subRecipes.splice(index, 1)
-      this.subRecipes = [...this.subRecipes];
+      this.recipeChange.emit({
+        subRecipe:
+          [...this.recipe.subRecipe.filter((_, i) => i !== index)]
+      });
     }
+  }
+
+  addTag(tag: string) {
+    this.recipeChange.emit({tags: [...this.recipe.tags, tag]});
+  }
+
+  removeTage(tag: string) {
+    if (this.recipe.tags.length <= 1) {
+      this.recipeChange.emit({tags: []});
+      return;
+    }
+    this.recipeChange.emit({tags: [...this.recipe.tags.filter(t => t !== tag)]});
+  }
+
+  update(key: string, value: any) {
+    this.recipeChange.emit({[key]: value});
   }
 }

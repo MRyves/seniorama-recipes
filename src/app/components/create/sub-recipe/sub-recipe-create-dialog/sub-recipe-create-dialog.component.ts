@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
-import {RecipeIngredient} from "../../../../models/RecipeIngredient";
+import {RecipeIngredientModel} from "../../../../models/RecipeIngredient.model";
 import {FormControl, Validators} from "@angular/forms";
-import {SubRecipe} from "../../../../models/SubRecipe";
+import {SubRecipeModel} from "../../../../models/SubRecipe.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {SubRecipeAccordionComponent} from "../sub-recipe-accordion/sub-recipe-accordion.component";
 
@@ -12,13 +12,13 @@ import {SubRecipeAccordionComponent} from "../sub-recipe-accordion/sub-recipe-ac
 export class SubRecipeCreateDialogComponent {
 
   name = new FormControl('', Validators.required);
-  ingredients: RecipeIngredient[] = [];
+  ingredients: RecipeIngredientModel[] = [];
 
   constructor(public dialogRef: MatDialogRef<SubRecipeCreateDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: {subRecipes: SubRecipe[]}) {
+              @Inject(MAT_DIALOG_DATA) private data: {subRecipes: SubRecipeModel[]}) {
   }
 
-  addIngredient($event: RecipeIngredient) {
+  addIngredient($event: RecipeIngredientModel) {
     this.ingredients = [...this.ingredients, $event];
   }
 

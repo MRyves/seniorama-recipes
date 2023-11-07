@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {SubRecipe} from "../../../../models/SubRecipe";
+import {SubRecipeModel} from "../../../../models/SubRecipe.model";
 
 @Component({
   selector: 'app-sub-recipe-accordion',
@@ -9,7 +9,7 @@ import {SubRecipe} from "../../../../models/SubRecipe";
 export class SubRecipeAccordionComponent {
 
   @Input({required: true})
-  subRecipes!: SubRecipe[];
+  subRecipes!: SubRecipeModel[];
 
   @Output()
   removeSubRecipe = new EventEmitter<number>();

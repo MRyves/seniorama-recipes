@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Editor} from "ngx-editor";
+import RecipeModel from "../../../models/Recipe.model";
 
 @Component({
   selector: 'app-method-editor',
@@ -11,16 +12,26 @@ import {Editor} from "ngx-editor";
 })
 export class MethodEditorComponent implements OnInit, OnDestroy{
 
+  @Input()
+  recipeMethod: string = '';
+
+  @Output()
+  recipeMethodChange = new EventEmitter<Partial<RecipeModel>>();
+
   editor!: Editor;
   html = '';
+
 
   ngOnInit(): void {
     this.editor = new Editor();
   }
 
-  // make sure to destory the editor
+  // make sure to destroy the editor
   ngOnDestroy(): void {
     this.editor.destroy();
   }
 
+  update($event: string) {
+    this.recipeMethodChange.emit({method: $event})
+  }
 }

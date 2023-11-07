@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {RecipeIngredient} from "../../../models/RecipeIngredient";
+import {RecipeIngredientModel} from "../../../models/RecipeIngredient.model";
 
 @Component({
   selector: 'app-ingredient-table',
@@ -12,7 +12,7 @@ import {RecipeIngredient} from "../../../models/RecipeIngredient";
 export class IngredientTableComponent implements OnInit {
 
   @Input({required: true})
-  ingredients!: RecipeIngredient[];
+  ingredients!: RecipeIngredientModel[];
 
   @Output()
   removeIngredient = new EventEmitter<number>();

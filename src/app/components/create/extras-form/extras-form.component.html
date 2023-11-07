@@ -1,18 +1,18 @@
 <div class="flex flex-col justify-between">
   <mat-form-field>
     <mat-label>Anrichten</mat-label>
-    <textarea matInput [formControl]="serveInput"></textarea>
+    <textarea matInput [ngModel]="recipe.serve" (ngModelChange)="update('serve', $event)"></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Bemerkung</mat-label>
-    <textarea matInput [formControl]="commentInput"></textarea>
+    <textarea matInput [ngModel]="recipe.comment" (ngModelChange)="update('comment', $event)"></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Geschirr</mat-label>
-    <textarea matInput [formControl]="plateInput"></textarea>
+    <textarea matInput [ngModel]="recipe.plate" (ngModelChange)="update('plate', $event)"></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Zeitaufwand</mat-label>
-    <textarea matInput [formControl]="timeInput"></textarea>
+    <textarea matInput [ngModel]="recipe.time" (ngModelChange)="update('time', $event)"></textarea>
   </mat-form-field>
 </div>

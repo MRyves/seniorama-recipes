@@ -1,26 +1,42 @@
 <div class="flex flex-col">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input type="text" [formControl]="name" required matInput>
-    <mat-error *ngIf="name.invalid">Das Rezept muss ein Namen haben!</mat-error>
+    <input type="text" [ngModel]="recipe.name" (ngModelChange)="update('name', $event)" required matInput>
   </mat-form-field>
   <div class="flex flex-row gap-2">
     <mat-form-field>
-      <mat-label>Menge</mat-label>
-      <input type="number" [formControl]="amount" required matInput>
-      <mat-error *ngIf="amount.invalid">Das Rezept muss eine Mengenangabe haben!</mat-error>
+      <mat-label>Portionen</mat-label>
+      <input type="number" [ngModel]="recipe.amount" (ngModelChange)="update('amount', $event)" required matInput>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Einheit</mat-label>
-      <input type="text" [formControl]="unit" required matInput>
-      <mat-error *ngIf="unit.invalid">Das Rezept muss eine Mengenangabe haben!</mat-error>
+      <mat-label>Gramm pro Portion</mat-label>
+      <input type="number" [ngModel]="recipe.gramPerPortion" (ngModelChange)="update('gramPerPortion', $event)" required
+             matInput>
+      <span matSuffix class="p-2">G</span>
+    </mat-form-field>
+  </div>
+  <div class="flex flex-row gap-2">
+    <div>
+      <app-auto-chips [allChips]="allTags" (chipAdded)="addTag($event)" (chipRemoved)="removeTage($event)"
+                      [selectedChips]="recipe.tags" placeholder="Tags"></app-auto-chips>
+    </div>
+    <mat-form-field>
+      <mat-label>Allergene</mat-label>
+      <mat-select [ngModel]="recipe.allergens" (ngModelChange)="update('allergens', $event)" multiple>
+        <mat-option *ngFor="let allergen of allAllergens" [value]="allergen">{{allergen}}</mat-option>
+      </mat-select>
+      <div matSuffix>
+        <button mat-icon-button (click)="update('allergens', [])">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
     </mat-form-field>
   </div>
 
   <h3 class="mat-subtitle-1">Zutaten hinzufügen:</h3>
   <app-ingredient-form (addIngredient)="addIngredient($event)"></app-ingredient-form>
 
-  <app-ingredient-table class="pb-3l" [ingredients]="ingredients"
+  <app-ingredient-table class="pb-3l" [ingredients]="recipe.ingredients"
                         (removeIngredient)="removeIngredient($event)"></app-ingredient-table>
 
   <mat-divider class="p-3"></mat-divider>
@@ -29,5 +45,6 @@
     <h3 class="mat-subtitle-1">Teil-Rezepte: </h3>
     <button mat-stroked-button color="primary" (click)="openSubRecipeDialog()">Hinzufügen</button>
   </div>
-  <app-sub-recipe-accordion [subRecipes]="subRecipes" (removeSubRecipe)="removeSubRecipe($event)"></app-sub-recipe-accordion>
+  <app-sub-recipe-accordion [subRecipes]="recipe.subRecipe"
+                            (removeSubRecipe)="removeSubRecipe($event)"></app-sub-recipe-accordion>
 </div>

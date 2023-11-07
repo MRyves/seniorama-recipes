@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {RecipeIngredient} from "../../../models/RecipeIngredient";
+import {RecipeIngredientModel} from "../../../models/RecipeIngredient.model";
 
 @Component({
   selector: 'app-ingredient-form',
@@ -10,7 +10,7 @@ import {RecipeIngredient} from "../../../models/RecipeIngredient";
 export class IngredientFormComponent {
 
   @Output()
-  addIngredient = new EventEmitter<RecipeIngredient>();
+  addIngredient = new EventEmitter<RecipeIngredientModel>();
 
   ingredientAmount = new FormControl();
   ingredientUnit = new FormControl('');

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {SubRecipe} from "../../../../models/SubRecipe";
+import {SubRecipeModel} from "../../../../models/SubRecipe.model";
 
 @Component({
   selector: 'app-sub-recipe-panel',
@@ -12,7 +12,7 @@ export class SubRecipePanelComponent {
   removeRecipe = new EventEmitter();
 
   @Input({required: true})
-  subRecipe!: SubRecipe;
+  subRecipe!: SubRecipeModel;
 
   removeIngredient(index: number) {
 

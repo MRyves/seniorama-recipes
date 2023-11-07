@@ -1,4 +1,5 @@
 <div class="NgxEditor__Wrapper h-full">
   <ngx-editor-menu [editor]="editor"></ngx-editor-menu>
-  <ngx-editor [editor]="editor" [ngModel]="html" [placeholder]="'Type here...'"></ngx-editor>
+  <ngx-editor [editor]="editor" [ngModel]="recipeMethod" (ngModelChange)="update($event)"
+              [placeholder]="'Type here...'"></ngx-editor>
 </div>
