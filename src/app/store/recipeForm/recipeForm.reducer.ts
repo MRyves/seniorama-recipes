@@ -5,6 +5,7 @@ import {RecipeFormActions} from "./recipeForm.actions";
 export interface RecipeFormState {
   recipe: RecipeModel;
   isEditMode: boolean;
+  isValid: boolean;
 }
 
 export const DEFAULT_RECIPE = {
@@ -22,18 +23,30 @@ const initialState: RecipeFormState = {
   recipe: {
     ...DEFAULT_RECIPE
   },
-  isEditMode: false
+  isEditMode: false,
+  isValid: false,
 }
 
-export const recipeFormReducer = createReducer(
-  initialState,
-  on(RecipeFormActions.reset, (_state) => initialState),
-  on(RecipeFormActions.update, (_state, {changes}) => ({
-    recipe: {..._state.recipe, ...changes}, isEditMode: _state.isEditMode
-  })),
-  on(RecipeFormActions.save, (_state) => {
-    console.log("Saving recipe: ", _state);
-    return initialState;
-  }),
-  on(RecipeFormActions.editRecipe, (_state, {recipe}) => ({recipe, isEditMode: true}))
+const isFormValid = (recipe: RecipeModel) => !!(
+  recipe.name &&
+  recipe.tags &&
+  recipe.gramPerPortion &&
+  recipe.amount &&
+  recipe.ingredients.length > 0
 );
+
+export const recipeFormReducer = createReducer(
+    initialState,
+    on(RecipeFormActions.reset, (_state) => initialState),
+    on(RecipeFormActions.update, (_state, {changes}) => {
+      const recipe = {..._state.recipe, ...changes};
+      const isValid = isFormValid(recipe)
+      return {
+        recipe: recipe,
+        isEditMode: _state.isEditMode,
+        isValid: isValid
+      }
+    }),
+    on(RecipeFormActions.editRecipe, (_state, {recipe}) => ({recipe, isEditMode: true, isValid: false}))
+  )
+;

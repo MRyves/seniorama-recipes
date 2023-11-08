@@ -12,9 +12,11 @@
     </mat-tab>
   </mat-tab-group>
   <div class="basis-1/12 flex flex-row gap-1 items-center justify-between">
-    <button class="flex-1" mat-raised-button color="primary">Seichern</button>
+    <button class="flex-1" mat-raised-button
+            color="primary" (click)="saveRecipe()"
+            [disabled]="!(isValid$ | async)">{{(isEditMode$ | async) ? 'Änderung Speichern' : 'Speichern'}}</button>
     <button class="flex-grow-0" mat-icon-button color="warn" (click)="resetRecipe()">
-      <mat-icon>repeat</mat-icon>
+      <mat-icon>clear</mat-icon>
     </button>
   </div>
 </div>

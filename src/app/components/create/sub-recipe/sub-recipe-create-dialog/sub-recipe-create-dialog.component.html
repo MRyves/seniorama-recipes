@@ -14,7 +14,7 @@
     <mat-error *ngIf="name.invalid">Das Rezept muss ein Namen haben!</mat-error>
   </mat-form-field>
 
-  <h3 class="mat-subtitle-1">Zutaten hinzufügen:</h3>
+  <h3 class="mat-subtitle-1">Zutaten hinzufügen: *</h3>
   <app-ingredient-form (addIngredient)="addIngredient($event)"></app-ingredient-form>
   <app-ingredient-table [ingredients]="ingredients"
                         (removeIngredient)="removeIngredient($event)"></app-ingredient-table>

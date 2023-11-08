@@ -41,7 +41,11 @@ import {recipeFormReducer} from "./store/recipeForm/recipeForm.reducer";
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
-import { EffectsModule } from '@ngrx/effects';
+import {EffectsModule} from '@ngrx/effects';
+import {environment} from "../environments/environment";
+import RecipeFormEffects from "./store/recipeForm/recipeForm.effects";
+import {FIREBASE_OPTIONS} from "@angular/fire/compat";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -66,6 +70,10 @@ import { EffectsModule } from '@ngrx/effects';
     ReactiveFormsModule,
     RouterOutlet,
     NgxEditorModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+    }),
+
 
     // Angular Material
     MatToolbarModule,
@@ -83,22 +91,19 @@ import { EffectsModule } from '@ngrx/effects';
     MatChipsModule,
     MatAutocompleteModule,
     MatSelectModule,
+
+    //ngrx
     StoreModule.forRoot({recipeForm: recipeFormReducer}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([RecipeFormEffects]),
 
-
-    provideFirebaseApp(() => initializeApp({
-      "projectId": "seniorama-recipes",
-      "appId": "1:94117818080:web:8f91afa2f2487efca9aa85",
-      "storageBucket": "seniorama-recipes.appspot.com",
-      "apiKey": "AIzaSyDDuZDDFlV2ddoFv2oC-F1Nf18lusNAzUE",
-      "authDomain": "seniorama-recipes.firebaseapp.com",
-      "messagingSenderId": "94117818080"
-    })),
+    //firebase
+    provideFirebaseApp(() => initializeApp({...environment.firebase})),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [
+    {provide: FIREBASE_OPTIONS, useValue: environment.firebase}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
