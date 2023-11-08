@@ -46,6 +46,9 @@ import {environment} from "../environments/environment";
 import RecipeFormEffects from "./store/recipeForm/recipeForm.effects";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import {ToastrModule} from "ngx-toastr";
+import { DisplayPageComponent } from './pages/display-page/display-page.component';
+import RecipeEffects from "./store/recipe/recipe.effects";
+import {recipeReducer} from "./store/recipe/recipe.reducer";
 
 @NgModule({
   declarations: [
@@ -61,6 +64,7 @@ import {ToastrModule} from "ngx-toastr";
     MethodEditorComponent,
     ExtrasFormComponent,
     AutoChipsComponent,
+    DisplayPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,9 +97,9 @@ import {ToastrModule} from "ngx-toastr";
     MatSelectModule,
 
     //ngrx
-    StoreModule.forRoot({recipeForm: recipeFormReducer}, {}),
+    StoreModule.forRoot({recipeForm: recipeFormReducer, recipes: recipeReducer}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
-    EffectsModule.forRoot([RecipeFormEffects]),
+    EffectsModule.forRoot([RecipeFormEffects, RecipeEffects]),
 
     //firebase
     provideFirebaseApp(() => initializeApp({...environment.firebase})),

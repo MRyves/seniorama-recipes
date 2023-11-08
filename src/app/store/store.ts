@@ -1,5 +1,7 @@
 import {RecipeFormState} from "./recipeForm/recipeForm.reducer";
+import {RecipesState} from "./recipe/recipe.reducer";
 
 export interface AppState {
-  recipeForm: RecipeFormState
+  recipes: RecipesState;
+  recipeForm: RecipeFormState;
 }
