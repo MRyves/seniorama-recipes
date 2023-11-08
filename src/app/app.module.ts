@@ -1,4 +1,4 @@
-import {NgModule, isDevMode} from '@angular/core';
+import {isDevMode, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -38,7 +38,10 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatSelectModule} from "@angular/material/select";
 import {recipeFormReducer} from "./store/recipeForm/recipeForm.reducer";
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
+import {getFirestore, provideFirestore} from '@angular/fire/firestore';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,19 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatAutocompleteModule,
     MatSelectModule,
     StoreModule.forRoot({recipeForm: recipeFormReducer}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    EffectsModule.forRoot([]),
+
+
+    provideFirebaseApp(() => initializeApp({
+      "projectId": "seniorama-recipes",
+      "appId": "1:94117818080:web:8f91afa2f2487efca9aa85",
+      "storageBucket": "seniorama-recipes.appspot.com",
+      "apiKey": "AIzaSyDDuZDDFlV2ddoFv2oC-F1Nf18lusNAzUE",
+      "authDomain": "seniorama-recipes.firebaseapp.com",
+      "messagingSenderId": "94117818080"
+    })),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

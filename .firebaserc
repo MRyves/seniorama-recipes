@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "seniorama-recipes"
+  },
+  "targets": {
+    "seniorama-recipes": {
+      "hosting": {
+        "recipies-mgmt": [
+          "seniorama-recipes"
+        ]
+      }
+    }
+  }
+}
