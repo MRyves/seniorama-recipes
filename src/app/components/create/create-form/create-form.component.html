@@ -15,7 +15,7 @@
       <span matSuffix class="p-2">G</span>
     </mat-form-field>
   </div>
-  <div class="flex flex-row gap-2">
+  <div class="flex flex-col md:flex-row md:gap-2">
     <div>
       <app-auto-chips [allChips]="allTags" (chipAdded)="addTag($event)" (chipRemoved)="removeTage($event)"
                       [selectedChips]="recipe.tags" placeholder="Tags *"></app-auto-chips>
