@@ -1,0 +1,5 @@
+<section id="recipe-list">
+  <mat-accordion displayMode="flat">
+    <app-recipe-panel *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-panel>
+  </mat-accordion>
+</section>

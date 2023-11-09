@@ -1,0 +1,42 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title class="mat-body-1 !mb-0">
+      {{recipe.name}}
+    </mat-panel-title>
+    <mat-panel-description class="mat-body-2 !mb-0">
+      {{recipe.tags.join(', ') | ellipsisSlice}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div id="recipe-detail" class="mat-body-1">
+    <div class="flex flex-col gap-1 w-full h-full">
+      <div class="flex flex-row gap-2">
+        <div class="font-medium">Portionen:</div>
+        <div>{{recipe.amount}}</div>
+        <div class="font-medium pl-2">Gramm/Portion:</div>
+        <div>{{recipe.gramPerPortion}}</div>
+      </div>
+      <div class="flex flex-row gap-2">
+
+      </div>
+      <div class="flex flex-row gap-2">
+        <div class="font-medium">Tags:</div>
+        <div>{{recipe.tags.join(', ')}}</div>
+      </div>
+      <div class="flex flex-row gap-2">
+        <div class="font-medium">Allergene:</div>
+        <div>{{recipe.allergens.join(', ')}}</div>
+      </div>
+      <ul role="list" class="pt-3">
+        <li class="font-medium">Zutaten:</li>
+        <li *ngFor="let ingredient of recipe.ingredients"
+                       role="listitem">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</li>
+      </ul>
+      <div *ngIf="recipe.subRecipe && recipe.subRecipe.length">
+          <app-sub-recipe *ngFor="let subRecipe of recipe.subRecipe" [subRecipe]="subRecipe"></app-sub-recipe>
+      </div>
+    </div>
+  </div>
+  <mat-action-row>
+    <button mat-raised-button color="primary" [routerLink]="['details', recipe.uid]">Details</button>
+  </mat-action-row>
+</mat-expansion-panel>

@@ -14,10 +14,6 @@ export class SubRecipePanelComponent {
   @Input({required: true})
   subRecipe!: SubRecipeModel;
 
-  removeIngredient(index: number) {
-
-  }
-
   removeSubRecipe($event: MouseEvent) {
     $event.stopPropagation();
     this.removeRecipe.emit();

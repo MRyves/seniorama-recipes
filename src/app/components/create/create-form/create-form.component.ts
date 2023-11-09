@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {RecipeIngredientModel} from "../../../models/RecipeIngredient.model";
-import {SubRecipeModel} from "../../../models/SubRecipe.model";
 import {MatDialog} from "@angular/material/dialog";
 import {
   SubRecipeCreateDialogComponent

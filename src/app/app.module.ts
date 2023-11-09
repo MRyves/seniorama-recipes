@@ -18,7 +18,7 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {IngredientFormComponent} from './components/create/ingredient-form/ingredient-form.component';
-import {IngredientTableComponent} from './components/create/ingredient-table/ingredient-table.component';
+import {IngredientTableComponent} from './components/shared/ingredient-table/ingredient-table.component';
 import {
   SubRecipeCreateDialogComponent
 } from './components/create/sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component';
@@ -49,6 +49,11 @@ import {ToastrModule} from "ngx-toastr";
 import { DisplayPageComponent } from './pages/display-page/display-page.component';
 import RecipeEffects from "./store/recipe/recipe.effects";
 import {recipeReducer} from "./store/recipe/recipe.reducer";
+import { RecipeListComponent } from './components/display/recipe-list/recipe-list.component';
+import { RecipePanelComponent } from './components/display/recipe-panel/recipe-panel.component';
+import { EllipsisSlicePipe } from './pipes/ellipsis-slice.pipe';
+import { SubRecipeComponent } from './components/display/sub-recipe/sub-recipe.component';
+import { IngredientDisplayPipe } from './pipes/ingredientDisplay.pipe';
 
 @NgModule({
   declarations: [
@@ -65,6 +70,11 @@ import {recipeReducer} from "./store/recipe/recipe.reducer";
     ExtrasFormComponent,
     AutoChipsComponent,
     DisplayPageComponent,
+    RecipeListComponent,
+    RecipePanelComponent,
+    EllipsisSlicePipe,
+    SubRecipeComponent,
+    IngredientDisplayPipe,
   ],
   imports: [
     BrowserModule,

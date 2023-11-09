@@ -1,1 +1,1 @@
-{{allRecipes$ | async | json}}
+<app-recipe-list [recipes]="(allRecipes$ | async)!"></app-recipe-list>
