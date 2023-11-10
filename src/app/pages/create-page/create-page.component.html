@@ -1,5 +1,5 @@
 <div class="h-full flex flex-col justify-between">
-  <mat-tab-group class="mat-tab-fill-height h-full" dynamicHeight>
+  <mat-tab-group class="mat-tab-fill-height min-h-[calc(100vh-200px)]" dynamicHeight>
     <mat-tab label="Zutaten" bodyClass="pb-3">
       <app-create-form [recipe]="(recipe$ | async)!" (recipeChange)="recipeChanged($event)"></app-create-form>
     </mat-tab>

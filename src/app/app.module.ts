@@ -46,14 +46,14 @@ import {environment} from "../environments/environment";
 import RecipeFormEffects from "./store/recipeForm/recipeForm.effects";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import {ToastrModule} from "ngx-toastr";
-import { DisplayPageComponent } from './pages/display-page/display-page.component';
+import {DisplayPageComponent} from './pages/display-page/display-page.component';
 import RecipeEffects from "./store/recipe/recipe.effects";
 import {recipeReducer} from "./store/recipe/recipe.reducer";
-import { RecipeListComponent } from './components/display/recipe-list/recipe-list.component';
-import { RecipePanelComponent } from './components/display/recipe-panel/recipe-panel.component';
-import { EllipsisSlicePipe } from './pipes/ellipsis-slice.pipe';
-import { SubRecipeComponent } from './components/display/sub-recipe/sub-recipe.component';
-import { IngredientDisplayPipe } from './pipes/ingredientDisplay.pipe';
+import {RecipeListComponent} from './components/display/recipe-list/recipe-list.component';
+import {RecipePanelComponent} from './components/display/recipe-panel/recipe-panel.component';
+import {EllipsisSlicePipe} from './pipes/ellipsis-slice.pipe';
+import {SubRecipeComponent} from './components/display/sub-recipe/sub-recipe.component';
+import {IngredientDisplayPipe} from './pipes/ingredientDisplay.pipe';
 
 @NgModule({
   declarations: [
@@ -83,7 +83,30 @@ import { IngredientDisplayPipe } from './pipes/ingredientDisplay.pipe';
     RouterLink,
     ReactiveFormsModule,
     RouterOutlet,
-    NgxEditorModule,
+    NgxEditorModule.forRoot({
+      locals: {
+        // menu
+        bold: 'Bold',
+        italic: 'Italic',
+        underline: 'Underline',
+        strike: 'Strike',
+        bullet_list: 'Bullet List',
+        ordered_list: 'Ordered List',
+        heading: 'Heading',
+        h1: 'Header 1',
+        h2: 'Header 2',
+        h3: 'Header 3',
+        h4: 'Header 4',
+        h5: 'Header 5',
+        h6: 'Header 6',
+        align_left: 'Left Align',
+        align_center: 'Center Align',
+        align_right: 'Right Align',
+        align_justify: 'Justify',
+        text_color: 'Text Color',
+        background_color: 'Background Color',
+      }
+    }),
     ToastrModule.forRoot({
       timeOut: 10000,
     }),

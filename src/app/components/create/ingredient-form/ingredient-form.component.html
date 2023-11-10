@@ -1,15 +1,23 @@
-<div class="flex flex-row gap-2">
-  <mat-form-field>
+<div class="flex flex-wrap md:flex-nowrap flex-row gap-0.5 md:gap-2">
+  <mat-form-field class="w-[calc(50%-1px)] md:w-auto">
     <mat-label>Menge</mat-label>
-    <input type="number" [formControl]="ingredientAmount" matInput>
+    <input #amountInput type="number" [formControl]="ingredientAmount" matInput>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="w-[calc(50%-1px)] md:w-auto">
     <mat-label>Einheit</mat-label>
-    <input type="string" [formControl]="ingredientUnit" matInput>
+    <mat-select [formControl]="ingredientUnit">
+      <mat-option value="Liter">Liter</mat-option>
+      <mat-option value="Dl">Dl</mat-option>
+      <mat-option value="Kg">Kg</mat-option>
+      <mat-option value="Gramm">Gramm</mat-option>
+    </mat-select>
+    <button matSuffix mat-icon-button tabindex="-1" (click)="ingredientUnit.reset()">
+      <mat-icon>clear</mat-icon>
+    </button>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="w-10/12 md:w-auto">
     <mat-label>Name / Beschreibung</mat-label>
-    <input type="string" [formControl]="ingredientName" matInput>
+    <input type="string" [formControl]="ingredientName" (keydown.enter)="add()" required matInput>
     <mat-error *ngIf="ingredientName.invalid"></mat-error>
   </mat-form-field>
   <div class="pt-2">

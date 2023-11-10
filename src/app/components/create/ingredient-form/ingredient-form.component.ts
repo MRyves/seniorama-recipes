@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {RecipeIngredientModel} from "../../../models/RecipeIngredient.model";
 
@@ -8,6 +8,9 @@ import {RecipeIngredientModel} from "../../../models/RecipeIngredient.model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IngredientFormComponent {
+
+  @ViewChild('amountInput')
+  amountInput!: ElementRef<HTMLInputElement>;
 
   @Output()
   addIngredient = new EventEmitter<RecipeIngredientModel>();
@@ -23,7 +26,11 @@ export class IngredientFormComponent {
         amount: this.ingredientAmount.value,
         unit: this.ingredientUnit.value,
         name: this.ingredientName.value,
-      })
+      });
+      this.ingredientUnit.reset();
+      this.ingredientAmount.reset();
+      this.ingredientName.reset();
+      this.amountInput.nativeElement.focus();
     }
   }
 }
