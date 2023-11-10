@@ -22,3 +22,8 @@ mat-form-field {
 .mat-mdc-tab-group.mat-tab-fill-height .mat-mdc-tab-body-wrapper {
   flex: 1 1 100%;
 }
+
+/* Style to fix the weird border with angular material */
+.mdc-notched-outline__notch {
+  border-right: none !important;
+}

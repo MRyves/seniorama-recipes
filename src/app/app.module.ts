@@ -18,7 +18,7 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {IngredientFormComponent} from './components/create/ingredient-form/ingredient-form.component';
-import {IngredientTableComponent} from './components/shared/ingredient-table/ingredient-table.component';
+import {IngredientTableComponent} from './components/create/ingredient-table/ingredient-table.component';
 import {
   SubRecipeCreateDialogComponent
 } from './components/create/sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component';
@@ -54,6 +54,9 @@ import {RecipePanelComponent} from './components/display/recipe-panel/recipe-pan
 import {EllipsisSlicePipe} from './pipes/ellipsis-slice.pipe';
 import {SubRecipeComponent} from './components/display/sub-recipe/sub-recipe.component';
 import {IngredientDisplayPipe} from './pipes/ingredientDisplay.pipe';
+import { RecipeFilterComponent } from './components/display/recipe-filter/recipe-filter.component';
+import { AllergensSelectComponent } from './components/shared/allergens-select/allergens-select.component';
+import { MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -75,6 +78,8 @@ import {IngredientDisplayPipe} from './pipes/ingredientDisplay.pipe';
     EllipsisSlicePipe,
     SubRecipeComponent,
     IngredientDisplayPipe,
+    RecipeFilterComponent,
+    AllergensSelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +124,7 @@ import {IngredientDisplayPipe} from './pipes/ingredientDisplay.pipe';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatExpansionModule,

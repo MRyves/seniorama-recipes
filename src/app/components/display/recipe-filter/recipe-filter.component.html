@@ -1,0 +1,16 @@
+<form name="recipeFilter" [formGroup]="filterGroup">
+  <div class="flex flex-row flex-wrap md:flex-nowrap justify-between items-center">
+    <mat-form-field class="w-full" appearance="outline" subscriptSizing="dynamic">
+      <mat-label class="border-0">Name</mat-label>
+      <input matInput type="text" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="w-1/2 md:w-full" appearance="outline" subscriptSizing="dynamic">
+      <mat-label>Tags</mat-label>
+      <input matInput type="text" formControlName="tags">
+    </mat-form-field>
+    <div class="w-1/2 md:w-full">
+      <app-allergens-select subscriptSizing="dynamic" appearance="outline"
+                            formControlName="allergens"></app-allergens-select>
+    </div>
+  </div>
+</form>

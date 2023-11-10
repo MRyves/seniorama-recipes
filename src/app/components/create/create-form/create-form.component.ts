@@ -19,23 +19,6 @@ const ALL_TAGS = [
   'Abendessen',
 ];
 
-const ALL_ALLERGENS: Allergen[] = [
-  "Eier",
-  "Erdnüsse",
-  "Fische",
-  "Gluten",
-  "Hausgrillpulver",
-  "Krebstiere",
-  "Laktose",
-  "Lupinen",
-  "Nüsse",
-  "Sellerie",
-  "Senf",
-  "Sesam",
-  "Soja",
-  "Sulfite",
-  "Weichtiere"];
-
 @Component({
   selector: 'app-create-form',
   templateUrl: './create-form.component.html',
@@ -52,7 +35,6 @@ export class CreateFormComponent {
   recipeChange = new EventEmitter<Partial<RecipeModel>>();
 
   readonly allTags = ALL_TAGS;
-  readonly allAllergens: Allergen[] = ALL_ALLERGENS;
 
   constructor(public dialog: MatDialog) {
   }

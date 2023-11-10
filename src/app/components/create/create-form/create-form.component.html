@@ -20,17 +20,9 @@
       <app-auto-chips [allChips]="allTags" (chipAdded)="addTag($event)" (chipRemoved)="removeTage($event)"
                       [selectedChips]="recipe.tags" placeholder="Tags *"></app-auto-chips>
     </div>
-    <mat-form-field>
-      <mat-label>Allergene</mat-label>
-      <mat-select [ngModel]="recipe.allergens" (ngModelChange)="update('allergens', $event)" multiple>
-        <mat-option *ngFor="let allergen of allAllergens" [value]="allergen">{{allergen}}</mat-option>
-      </mat-select>
-      <div matSuffix>
-        <button mat-icon-button (click)="update('allergens', [])">
-          <mat-icon>clear</mat-icon>
-        </button>
-      </div>
-    </mat-form-field>
+    <div class="flex-grow">
+      <app-allergens-select [allergens]="recipe.allergens" (allergensChange)="update('allergens', $event)"></app-allergens-select>
+    </div>
   </div>
 
   <h3 class="mat-subtitle-1">Zutaten hinzufügen: *</h3>

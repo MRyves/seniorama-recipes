@@ -1,0 +1,11 @@
+<mat-form-field [subscriptSizing]="subscriptSizing" [appearance]="appearance">
+  <mat-label>Allergene</mat-label>
+  <mat-select [ngModel]="allergens" (ngModelChange)="updateValue($event)" multiple>
+    <mat-option *ngFor="let allergen of allAllergens" [value]="allergen">{{allergen}}</mat-option>
+  </mat-select>
+  <div matSuffix>
+    <button mat-icon-button (click)="allergensChange.emit([])">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</mat-form-field>
