@@ -13,7 +13,6 @@ const checkName = (filterValue: Nullable<string>, recipeValue: string) => {
   if (!filterValue) {
     return true;
   }
-  console.log("check name: ", {filterValue, recipeValue});
   return recipeValue.toLowerCase().includes(filterValue.trim().toLowerCase());
 }
 

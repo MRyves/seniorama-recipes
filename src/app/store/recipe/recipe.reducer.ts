@@ -1,6 +1,6 @@
 import RecipeModel from "../../models/Recipe.model";
 import {createEntityAdapter, EntityAdapter, EntityState} from "@ngrx/entity";
-import {createFeatureSelector, createReducer, on} from "@ngrx/store";
+import {createFeatureSelector, createReducer, createSelector, on} from "@ngrx/store";
 import {RecipeActions} from "./recipe.actions";
 
 export interface RecipesState extends EntityState<RecipeModel> {
@@ -33,6 +33,10 @@ export const selectRecipesState = createFeatureSelector<RecipesState>('recipes')
 
 export const {selectIds, selectEntities, selectAll, selectTotal} =
   adapter.getSelectors(selectRecipesState);
+
+export const selectRecipe = (uid: string) =>
+  createSelector(selectEntities,
+    state => state[uid]);
 
 
 
