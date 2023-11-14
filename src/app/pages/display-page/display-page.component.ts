@@ -6,6 +6,8 @@ import * as fromRecipes from "../../store/recipe/recipe.reducer";
 import {TitleService} from "../../services/title.service";
 import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from "rxjs";
 import {RecipeFilter} from "../../models/RecipeFilter.model";
+import {ConfirmDialogService} from "../../services/confirm-dialog.service";
+import {RecipeService} from "../../services/recipe.service";
 
 const checkName = (filterValue: Nullable<string>, recipeValue: string) => {
   if (!filterValue) {
@@ -20,7 +22,8 @@ const checkTags = (filterTags: Nullable<string[]>, recipeTags: string[]) => {
     return true;
   }
   console.log("check tags: ", {filterTags, recipeTags});
-  return recipeTags.some(t => filterTags.includes(t));
+  const joinedRecipeTags = recipeTags.join(',');
+  return filterTags.some(ft => joinedRecipeTags.includes(ft));
 }
 
 const checkAllergens = (filterAllergens: Nullable<string[]>, recipeAllergens: string[]) => {
@@ -51,7 +54,10 @@ export class DisplayPageComponent implements OnInit {
     distinctUntilChanged(),
   );
 
-  constructor(private store: Store<AppState>, private titleService: TitleService) {
+  constructor(private store: Store<AppState>,
+              private titleService: TitleService,
+              private recipeService: RecipeService,
+              private confirmService: ConfirmDialogService) {
     this.titleService.setTitle('');
   }
 
@@ -59,4 +65,13 @@ export class DisplayPageComponent implements OnInit {
     this.store.dispatch(RecipeActions.query());
   }
 
+  deleteRecipe(recipeUid: string) {
+    this.confirmService.confirm("Möchtest du das Rezept wirklich löschen?", "Löschen!")
+      .subscribe(result => {
+        if (result) {
+          this.recipeService.delete(recipeUid);
+        }
+      });
+
+  }
 }

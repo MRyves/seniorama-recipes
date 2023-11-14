@@ -1,0 +1,8 @@
+<p class="mat-body-1">
+  {{data.text}}
+</p>
+<hr class="p-2">
+<div class="flex justify-end items-center">
+  <button mat-flat-button color="warn" (click)="close(true)">{{data.confirmButtonText}}</button>
+  <button mat-flat-button (click)="close(false)">{{cancelButtonText}}</button>
+</div>

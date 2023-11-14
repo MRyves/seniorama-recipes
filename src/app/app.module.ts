@@ -57,6 +57,7 @@ import {IngredientDisplayPipe} from './pipes/ingredientDisplay.pipe';
 import { RecipeFilterComponent } from './components/display/recipe-filter/recipe-filter.component';
 import { AllergensSelectComponent } from './components/shared/allergens-select/allergens-select.component';
 import { MatFormFieldModule} from "@angular/material/form-field";
+import { ConfirmDialogComponent } from './components/ui/confim-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { MatFormFieldModule} from "@angular/material/form-field";
     IngredientDisplayPipe,
     RecipeFilterComponent,
     AllergensSelectComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

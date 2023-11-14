@@ -29,14 +29,15 @@
       <ul role="list" class="pt-3">
         <li class="font-medium">Zutaten:</li>
         <li *ngFor="let ingredient of recipe.ingredients"
-                       role="listitem">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</li>
+            role="listitem">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</li>
       </ul>
       <div *ngIf="recipe.subRecipe && recipe.subRecipe.length">
-          <app-sub-recipe *ngFor="let subRecipe of recipe.subRecipe" [subRecipe]="subRecipe"></app-sub-recipe>
+        <app-sub-recipe *ngFor="let subRecipe of recipe.subRecipe" [subRecipe]="subRecipe"></app-sub-recipe>
       </div>
     </div>
   </div>
   <mat-action-row>
+    <button mat-raised-button color="warn" (click)="deleteRecipe.emit(recipe.uid)">Löschen</button>
     <button mat-raised-button color="primary" [routerLink]="['details', recipe.uid]">Details</button>
   </mat-action-row>
 </mat-expansion-panel>

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import RecipeModel from "../../../models/Recipe.model";
 
 @Component({
@@ -10,4 +10,7 @@ import RecipeModel from "../../../models/Recipe.model";
 export class RecipePanelComponent {
   @Input({required: true})
   recipe!: RecipeModel;
+
+  @Output()
+  deleteRecipe = new EventEmitter<string>();
 }

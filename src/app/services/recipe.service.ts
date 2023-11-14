@@ -17,12 +17,23 @@ export class RecipeService {
 
   async save(recipeForm: RecipeFormState) {
     try {
-      const docref = recipeForm.isEditMode ?
+      const docRef = recipeForm.isEditMode ?
         await this.saveRecipe(recipeForm.recipe) :
         await this.saveNewRecipe(recipeForm.recipe);
-      this.toast.success(`url/recipe/${docref.id}`, 'Successfully created new recipe');
+      this.toast.success(`url/recipe/${docRef.id}`, 'Neues Rezept erstellt!');
     } catch (e) {
-      throw new Error("Failed to save recipe", {cause: e});
+      this.toast.error("Fehler beim speichern!");
+      console.error("Failed to save new recipe: ", e);
+    }
+  }
+
+  async delete(recipeUid: string) {
+    try {
+      await this.recipeCollection.doc(recipeUid).delete();
+      this.toast.success('Rezept gelöscht!')
+    } catch (e) {
+      this.toast.error("Fehler beim löschen des Rezeptes");
+      console.error("Failed to delete recipe: ", e);
     }
   }
 
