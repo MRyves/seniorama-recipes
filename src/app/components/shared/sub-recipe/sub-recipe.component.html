@@ -1,5 +1,5 @@
-<ul role="list">
+<ul role="list" class="mat-body-1">
   <li class="font-medium">{{subRecipe.name}}</li>
-  <li
+  <li class="colored-list-items"
     *ngFor="let ingredient of subRecipe.ingredients">{{ingredient | ingredientDisplay : factor }}</li>
 </ul>

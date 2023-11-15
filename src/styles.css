@@ -27,3 +27,7 @@ mat-form-field {
 .mdc-notched-outline__notch {
   border-right: none !important;
 }
+
+.colored-list-items:nth-child(even) {
+  @apply bg-gray-100;
+}
