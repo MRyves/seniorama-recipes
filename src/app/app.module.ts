@@ -52,13 +52,17 @@ import {recipeReducer} from "./store/recipe/recipe.reducer";
 import {RecipeListComponent} from './components/display/recipe-list/recipe-list.component';
 import {RecipePanelComponent} from './components/display/recipe-panel/recipe-panel.component';
 import {EllipsisSlicePipe} from './pipes/ellipsis-slice.pipe';
-import {SubRecipeComponent} from './components/display/sub-recipe/sub-recipe.component';
+import {SubRecipeComponent} from './components/shared/sub-recipe/sub-recipe.component';
 import {IngredientDisplayPipe} from './pipes/ingredientDisplay.pipe';
-import { RecipeFilterComponent } from './components/display/recipe-filter/recipe-filter.component';
-import { AllergensSelectComponent } from './components/shared/allergens-select/allergens-select.component';
-import { MatFormFieldModule} from "@angular/material/form-field";
-import { ConfirmDialogComponent } from './components/ui/confim-dialog/confirm-dialog.component';
-import { DetailPageComponent } from './pages/detail-page/detail-page.component';
+import {RecipeFilterComponent} from './components/display/recipe-filter/recipe-filter.component';
+import {AllergensSelectComponent} from './components/shared/allergens-select/allergens-select.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ConfirmDialogComponent} from './components/ui/confim-dialog/confirm-dialog.component';
+import {DetailPageComponent} from './pages/detail-page/detail-page.component';
+import {RecipeDetailComponent} from './components/detail/recipe-detail/recipe-detail.component';
+import {AmountPortionFormComponent} from './components/detail/amount-portion-form/amount-portion-form.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { IngredientListComponent } from './components/shared/ingredient-list/ingredient-list.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +88,9 @@ import { DetailPageComponent } from './pages/detail-page/detail-page.component';
     AllergensSelectComponent,
     ConfirmDialogComponent,
     DetailPageComponent,
+    RecipeDetailComponent,
+    AmountPortionFormComponent,
+    IngredientListComponent,
   ],
   imports: [
     BrowserModule,
@@ -149,7 +156,9 @@ import { DetailPageComponent } from './pages/detail-page/detail-page.component';
     provideFirestore(() => getFirestore()),
   ],
   providers: [
-    {provide: FIREBASE_OPTIONS, useValue: environment.firebase}
+    {provide: FIREBASE_OPTIONS, useValue: environment.firebase},
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+
   ],
   bootstrap: [AppComponent]
 })

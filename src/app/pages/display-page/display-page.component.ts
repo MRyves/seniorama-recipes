@@ -39,7 +39,7 @@ const checkAllergens = (filterAllergens: Nullable<string[]>, recipeAllergens: st
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DisplayPageComponent implements OnInit {
+export class DisplayPageComponent {
 
   filter = new BehaviorSubject<RecipeFilter>({});
 
@@ -58,10 +58,6 @@ export class DisplayPageComponent implements OnInit {
               private recipeService: RecipeService,
               private confirmService: ConfirmDialogService) {
     this.titleService.setTitle('');
-  }
-
-  ngOnInit() {
-    this.store.dispatch(RecipeActions.query());
   }
 
   deleteRecipe(recipeUid: string) {

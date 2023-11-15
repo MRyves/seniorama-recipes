@@ -1,0 +1,7 @@
+<ul role="list">
+  <li class="font-medium">Zutaten:</li>
+  <li *ngFor="let ingredient of ingredients">{{ingredient | ingredientDisplay : amountFactor}}</li>
+</ul>
+<div *ngIf="subRecipes && subRecipes.length">
+  <app-sub-recipe *ngFor="let subRecipe of subRecipes" [subRecipe]="subRecipe" [factor]="amountFactor"></app-sub-recipe>
+</div>

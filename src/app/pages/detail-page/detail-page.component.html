@@ -1,3 +1,1 @@
-<pre>
-  {{recipe$ | async | json}}
-</pre>
+<app-recipe-detail *ngIf="recipe$ | async" [recipe]="(recipe$ | async)!"></app-recipe-detail>

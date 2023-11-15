@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup" class="flex gap-0.5">
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>
+      Portionen
+    </mat-label>
+    <input matInput formControlName="amount" type="number" min="1">
+  </mat-form-field>
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>
+      Gramm pro Portion
+    </mat-label>
+    <input type="number" matInput formControlName="perPortion" min="1">
+  </mat-form-field>
+</form>
+<div *ngIf="formGroup.invalid" class="text-red-600">
+  Ungültige Mengenangabe!
+</div>

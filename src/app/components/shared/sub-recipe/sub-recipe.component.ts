@@ -8,7 +8,10 @@ import {SubRecipeModel} from "../../../models/SubRecipe.model";
 })
 export class SubRecipeComponent {
 
-  @Input()
+  @Input({required: true})
   subRecipe!: SubRecipeModel;
+
+  @Input()
+  factor = 1;
 
 }

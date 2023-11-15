@@ -26,13 +26,8 @@
         <div class="font-medium">Allergene:</div>
         <div>{{recipe.allergens.join(', ')}}</div>
       </div>
-      <ul role="list" class="pt-3">
-        <li class="font-medium">Zutaten:</li>
-        <li *ngFor="let ingredient of recipe.ingredients"
-            role="listitem">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</li>
-      </ul>
-      <div *ngIf="recipe.subRecipe && recipe.subRecipe.length">
-        <app-sub-recipe *ngFor="let subRecipe of recipe.subRecipe" [subRecipe]="subRecipe"></app-sub-recipe>
+      <div class="pt-3">
+        <app-ingredient-list [ingredients]="recipe.ingredients" [subRecipes]="recipe.subRecipe"></app-ingredient-list>
       </div>
     </div>
   </div>

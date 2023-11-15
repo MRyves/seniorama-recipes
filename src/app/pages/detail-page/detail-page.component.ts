@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import RecipeModel from "../../models/Recipe.model";
 
 @Component({
@@ -11,7 +11,7 @@ import RecipeModel from "../../models/Recipe.model";
 })
 export class DetailPageComponent {
 
-  recipe$ = this.activatedRoute.data as Observable<RecipeModel>;
+  recipe$ = this.activatedRoute.data.pipe(map(data => data['recipeData'])) as Observable<RecipeModel>;
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
