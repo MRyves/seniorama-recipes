@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import RecipeModel from "../../../models/Recipe.model";
 import {AmountPortionFormType} from "../amount-portion-form/amount-portion-form.component";
 
@@ -12,6 +12,9 @@ export class RecipeDetailComponent {
 
   @Input({required: true})
   recipe!: RecipeModel
+
+  @Output()
+  methodChanged = new EventEmitter<{uid: string, method: string}>();
 
   amountFactor = 1;
   perPortionFactor = 1;

@@ -5,6 +5,11 @@
                              (amountChanged)="amountChanged($event)"></app-amount-portion-form>
   </div>
   <div class="pt-3">
-    <app-ingredient-list [ingredients]="recipe.ingredients" [subRecipes]="recipe.subRecipe" [amountFactor]="factor"></app-ingredient-list>
+    <app-ingredient-list [ingredients]="recipe.ingredients" [subRecipes]="recipe.subRecipe"
+                         [amountFactor]="factor"></app-ingredient-list>
+  </div>
+  <div>
+    <app-method-detail [methodHtml]="recipe.method"
+                       (methodChanged)="methodChanged.emit({uid: recipe.uid!, method: $event})"></app-method-detail>
   </div>
 </div>

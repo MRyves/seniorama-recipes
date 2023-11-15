@@ -37,6 +37,16 @@ export class RecipeService {
     }
   }
 
+  async update(uid: string, update: Partial<RecipeModel>){
+    try {
+      await this.recipeCollection.doc(uid).update(update);
+      this.toast.success('Rezept angepasst!')
+    } catch (e) {
+      this.toast.error("Fehler beim speichern des Rezeptes");
+      console.error("Failed to update a recipe: ", e);
+    }
+  }
+
   private saveNewRecipe(recipe: RecipeModel) {
     return this.recipeCollection.add(recipe);
   }

@@ -63,6 +63,8 @@ import {RecipeDetailComponent} from './components/detail/recipe-detail/recipe-de
 import {AmountPortionFormComponent} from './components/detail/amount-portion-form/amount-portion-form.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { IngredientListComponent } from './components/shared/ingredient-list/ingredient-list.component';
+import { MethodDetailComponent } from './components/detail/method-detail/method-detail.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { IngredientListComponent } from './components/shared/ingredient-list/ing
     RecipeDetailComponent,
     AmountPortionFormComponent,
     IngredientListComponent,
+    MethodDetailComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
