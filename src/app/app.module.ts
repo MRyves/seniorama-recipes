@@ -65,6 +65,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { IngredientListComponent } from './components/shared/ingredient-list/ingredient-list.component';
 import { MethodDetailComponent } from './components/detail/method-detail/method-detail.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { ExtraInfoComponent } from './components/detail/extra-info/extra-info.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     IngredientListComponent,
     MethodDetailComponent,
     SafeHtmlPipe,
+    ExtraInfoComponent,
   ],
   imports: [
     BrowserModule,

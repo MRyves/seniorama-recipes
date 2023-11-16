@@ -12,25 +12,8 @@
     <app-method-detail [methodHtml]="recipe.method"
                        (methodChanged)="methodChanged.emit({uid: recipe.uid!, method: $event})"></app-method-detail>
   </div>
-  <div class="pt-2 mat-body-1">
-    <span class="font-semibold">Weitere Infos:</span>
-    <div class="grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2">
-      <div class="flex flex-col">
-        <span class="mat-body-1 underline">Anrichten:</span>
-        <p>{{recipe.serve || "- Keine Angabe"}}</p>
-      </div>
-      <div class="flex flex-col">
-        <span class="mat-body-1 underline">Bemerkungen:</span>
-        <p>{{recipe.comment || "- Keine Infos"}}</p>
-      </div>
-      <div class="flex flex-col">
-        <span class="mat-body-1 underline">Geschirr:</span>
-        <p>{{recipe.plate || "- Keine Angabe"}}</p>
-      </div>
-      <div class="flex flex-col">
-        <span class="mat-body-1 underline">Zeitaufwand:</span>
-        <p>{{recipe.time || "- Keine Angabe"}}</p>
-      </div>
-    </div>
+  <div class="pt-3">
+    <app-extra-info [commentInfo]="recipe.comment" [plateInfo]="recipe.plate" [serveInfo]="recipe.serve"
+                    [timeInfo]="recipe.time"></app-extra-info>
   </div>
 </div>

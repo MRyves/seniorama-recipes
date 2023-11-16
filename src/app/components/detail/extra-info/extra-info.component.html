@@ -1,0 +1,19 @@
+<span class="font-semibold">Weitere Infos:</span>
+<div class="grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2">
+  <div class="flex flex-col">
+    <span class="mat-body-1 underline">Anrichten:</span>
+    <p [class.text-gray-300]="!serveInfo">{{serveInfo || "- Keine Angabe"}}</p>
+  </div>
+  <div class="flex flex-col">
+    <span class="mat-body-1 underline">Bemerkungen:</span>
+    <p [class.text-gray-300]="!commentInfo">{{commentInfo || "- Keine"}}</p>
+  </div>
+  <div class="flex flex-col">
+    <span class="mat-body-1 underline">Geschirr:</span>
+    <p [class.text-gray-300]="!plateInfo">{{plateInfo || "- Keine Angabe"}}</p>
+  </div>
+  <div class="flex flex-col">
+    <span class="mat-body-1 underline">Zeitaufwand:</span>
+    <p [class.text-gray-300]="!timeInfo">{{timeInfo || "- Keine Angabe"}}</p>
+  </div>
+</div>
