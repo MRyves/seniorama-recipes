@@ -17,8 +17,6 @@ export class DetailPageComponent {
   constructor(private activatedRoute: ActivatedRoute, private recipeService: RecipeService) {
   }
 
-
-
   updateRecipe(changes: Partial<RecipeModel>) {
     if(changes.uid){
       this.recipeService.update(changes.uid, changes);

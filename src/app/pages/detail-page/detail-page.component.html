@@ -1,1 +1,2 @@
-<app-recipe-detail *ngIf="recipe$ | async" [recipe]="(recipe$ | async)!" (methodChanged)="updateRecipe($event)"></app-recipe-detail>
+<app-recipe-detail *ngIf="recipe$ | async" [recipe]="(recipe$ | async)!"
+                   (methodChanged)="updateRecipe($event)"></app-recipe-detail>
