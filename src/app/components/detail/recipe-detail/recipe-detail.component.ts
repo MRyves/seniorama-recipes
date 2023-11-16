@@ -16,6 +16,9 @@ export class RecipeDetailComponent {
   @Output()
   methodChanged = new EventEmitter<{uid: string, method: string}>();
 
+  @Output()
+  editRecipeClick = new EventEmitter<RecipeModel>();
+
   amountFactor = 1;
   perPortionFactor = 1;
   factor = 1;

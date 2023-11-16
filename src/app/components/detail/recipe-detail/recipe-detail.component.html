@@ -1,5 +1,10 @@
 <div class="flex flex-col">
-  <div class="mat-headline-6">{{recipe.name}}</div>
+  <div class="flex flex-row justify-between">
+    <span class="block mat-headline-6">{{recipe.name}}</span>
+    <button mat-flat-button color="accent" (click)="editRecipeClick.emit(recipe)">
+      Bearbeiten
+    </button>
+  </div>
   <div>
     <app-amount-portion-form [amount]="recipe.amount" [perPortion]="recipe.gramPerPortion"
                              (amountChanged)="amountChanged($event)"></app-amount-portion-form>

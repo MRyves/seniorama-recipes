@@ -3,9 +3,9 @@ import {TitleService} from "../../services/title.service";
 import {Store} from '@ngrx/store';
 import RecipeModel from "../../models/Recipe.model";
 import {RecipeFormActions} from "../../store/recipeForm/recipeForm.actions";
-import {DEFAULT_RECIPE} from "../../store/recipeForm/recipeForm.reducer";
 import {AppState} from "../../store/store";
 import {fromRecipeForm} from "../../store/recipeForm/recipeForm.selectors";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-create-page',
@@ -18,13 +18,19 @@ export class CreatePageComponent implements OnInit {
   isEditMode$ = this.store$.select(fromRecipeForm.isEditMode);
   isValid$ = this.store$.select(fromRecipeForm.isValid);
 
-  constructor(private titleService: TitleService, private store$: Store<AppState>) {
+  constructor(private titleService: TitleService,
+              private store$: Store<AppState>,
+              private activatedRoute: ActivatedRoute) {
 
   }
 
 
   ngOnInit() {
-    this.titleService.setTitle("Erfasse ein neues Rezept")
+    if (this.activatedRoute.snapshot.data['recipeUid']) {
+      this.titleService.setTitle("Rezept bearbeiten");
+    } else {
+      this.titleService.setTitle("Erfasse ein neues Rezept")
+    }
   }
 
   recipeChanged(changes: Partial<RecipeModel>) {

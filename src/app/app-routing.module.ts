@@ -5,13 +5,15 @@ import {CreatePageComponent} from "./pages/create-page/create-page.component";
 import {DisplayPageComponent} from "./pages/display-page/display-page.component";
 import {recipeResolver} from "./pages/detail-page/recipe-resolver";
 import {DetailPageComponent} from "./pages/detail-page/detail-page.component";
+import {editResolver} from "./pages/edit-page/edit-resolver";
 
 const routes: Routes = [
   {path: '', component: DisplayPageComponent},
   {path: 'create', component: CreatePageComponent},
+  {path: 'edit/:uid', component: CreatePageComponent, resolve: {recipeUid: editResolver}},
   {
     path: 'details/:uid',
-    resolve: { recipeData: recipeResolver },
+    resolve: {recipeData: recipeResolver},
     component: DetailPageComponent,
   }
 
