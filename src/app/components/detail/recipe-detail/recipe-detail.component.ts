@@ -11,10 +11,13 @@ import {AmountPortionFormType} from "../amount-portion-form/amount-portion-form.
 export class RecipeDetailComponent {
 
   @Input({required: true})
+  isLoggedIn: boolean = false;
+
+  @Input({required: true})
   recipe!: RecipeModel
 
   @Output()
-  methodChanged = new EventEmitter<{uid: string, method: string}>();
+  methodChanged = new EventEmitter<{ uid: string, method: string }>();
 
   @Output()
   editRecipeClick = new EventEmitter<RecipeModel>();
@@ -28,5 +31,17 @@ export class RecipeDetailComponent {
     this.perPortionFactor = change.perPortion ? change.perPortion / this.recipe.gramPerPortion : this.perPortionFactor;
 
     this.factor = this.amountFactor * this.perPortionFactor;
+  }
+
+  onEdit(recipe: RecipeModel) {
+    if (this.isLoggedIn) {
+      this.editRecipeClick.emit(recipe);
+    }
+  }
+
+  onMethodChanged(params: { uid: string; method: string }) {
+    if (this.isLoggedIn) {
+      this.methodChanged.emit(params);
+    }
   }
 }

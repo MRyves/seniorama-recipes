@@ -9,8 +9,17 @@ import RecipeModel from "../../../models/Recipe.model";
 })
 export class RecipePanelComponent {
   @Input({required: true})
+  isLoggedIn: boolean = false;
+
+  @Input({required: true})
   recipe!: RecipeModel;
 
   @Output()
   deleteRecipe = new EventEmitter<string>();
+
+  onDeleteRecipe(uid: string){
+    if(this.isLoggedIn){
+      this.deleteRecipe.emit(uid);
+    }
+  }
 }

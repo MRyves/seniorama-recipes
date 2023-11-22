@@ -1,6 +1,15 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output
+} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
 import {TitleService} from "../../../services/title.service";
+import User from "../../../models/User.model";
 
 @Component({
   selector: 'app-layout',
@@ -9,6 +18,12 @@ import {TitleService} from "../../../services/title.service";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppLayoutComponent implements OnDestroy {
+
+  @Input()
+  user: User | null = null;
+
+  @Output()
+  logoutClick = new EventEmitter<never>();
 
   mobileQuery: MediaQueryList;
   private readonly _mobileQueryListener: () => void;

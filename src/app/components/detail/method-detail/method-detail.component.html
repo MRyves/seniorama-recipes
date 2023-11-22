@@ -6,7 +6,7 @@
   <mat-card-content [innerHTML]="methodHtml | safeHtml">
   </mat-card-content>
   <mat-card-actions class="flex justify-end">
-    <button mat-flat-button color="primary" (click)="startEdit()">
+    <button mat-flat-button color="primary" [disabled]="disableEdit" (click)="startEdit()">
       <mat-icon>edit</mat-icon>
       Anpassen
     </button>

@@ -7,6 +7,7 @@ import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from "rxjs";
 import {RecipeFilter} from "../../models/RecipeFilter.model";
 import {ConfirmDialogService} from "../../services/confirm-dialog.service";
 import {RecipeService} from "../../services/recipe.service";
+import {fromAuth} from "../../store/auth/auth.selectors";
 
 const checkName = (filterValue: Nullable<string>, recipeValue: string) => {
   if (!filterValue) {
@@ -51,6 +52,8 @@ export class DisplayPageComponent {
       )),
     distinctUntilChanged(),
   );
+
+  isLoggedIn$ = this.store.select(fromAuth.isLoggedIn);
 
   constructor(private store: Store<AppState>,
               private titleService: TitleService,

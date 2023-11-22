@@ -66,6 +66,11 @@ import { IngredientListComponent } from './components/shared/ingredient-list/ing
 import { MethodDetailComponent } from './components/detail/method-detail/method-detail.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { ExtraInfoComponent } from './components/detail/extra-info/extra-info.component';
+import {getAuth, provideAuth} from "@angular/fire/auth";
+import {MatMenuModule} from "@angular/material/menu";
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {authReducer} from "./store/auth/auth.reducers";
+import AuthEffects from "./store/auth/auth.effects";
 
 @NgModule({
   declarations: [
@@ -95,8 +100,9 @@ import { ExtraInfoComponent } from './components/detail/extra-info/extra-info.co
     AmountPortionFormComponent,
     IngredientListComponent,
     MethodDetailComponent,
-    SafeHtmlPipe,
     ExtraInfoComponent,
+    LoginPageComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
@@ -153,13 +159,15 @@ import { ExtraInfoComponent } from './components/detail/extra-info/extra-info.co
     MatSelectModule,
 
     //ngrx
-    StoreModule.forRoot({recipeForm: recipeFormReducer, recipes: recipeReducer}, {}),
+    StoreModule.forRoot({recipeForm: recipeFormReducer, recipes: recipeReducer, auth: authReducer}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
-    EffectsModule.forRoot([RecipeFormEffects, RecipeEffects]),
+    EffectsModule.forRoot([RecipeFormEffects, RecipeEffects, AuthEffects]),
 
     //firebase
     provideFirebaseApp(() => initializeApp({...environment.firebase})),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    MatMenuModule,
   ],
   providers: [
     {provide: FIREBASE_OPTIONS, useValue: environment.firebase},

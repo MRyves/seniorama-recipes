@@ -8,6 +8,7 @@ import {Store} from "@ngrx/store";
 import {RecipeActions} from "../../store/recipe/recipe.actions";
 import {RecipeFormActions} from "../../store/recipeForm/recipeForm.actions";
 import {TitleService} from "../../services/title.service";
+import {fromAuth} from "../../store/auth/auth.selectors";
 
 @Component({
   selector: 'app-detail-page',
@@ -17,6 +18,7 @@ import {TitleService} from "../../services/title.service";
 })
 export class DetailPageComponent implements OnInit{
 
+  isLoggedIn$ = this.store.select(fromAuth.isLoggedIn);
   recipe$ = this.activatedRoute.data.pipe(map(data => data['recipeData'])) as Observable<RecipeModel>;
 
   constructor(private activatedRoute: ActivatedRoute,

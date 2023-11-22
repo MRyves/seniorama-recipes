@@ -1,5 +1,5 @@
 <div class="h-full w-full">
-<app-layout>
+<app-layout [user]="currentUser$ | async" (logoutClick)="logout()">
   <router-outlet></router-outlet>
 </app-layout>
 </div>

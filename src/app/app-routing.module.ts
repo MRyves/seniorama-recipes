@@ -6,17 +6,34 @@ import {DisplayPageComponent} from "./pages/display-page/display-page.component"
 import {recipeResolver} from "./pages/detail-page/recipe-resolver";
 import {DetailPageComponent} from "./pages/detail-page/detail-page.component";
 import {editResolver} from "./pages/edit-page/edit-resolver";
+import {LoginPageComponent} from "./pages/login-page/login-page.component";
+import {AuthGuard} from "@angular/fire/auth-guard";
 
 const routes: Routes = [
-  {path: '', component: DisplayPageComponent},
-  {path: 'create', component: CreatePageComponent},
-  {path: 'edit/:uid', component: CreatePageComponent, resolve: {recipeUid: editResolver}},
+  {
+    path: '',
+    component: DisplayPageComponent
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
+    path: 'create',
+    component: CreatePageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit/:uid',
+    component: CreatePageComponent,
+    canActivate: [AuthGuard],
+    resolve: {recipeUid: editResolver}
+  },
   {
     path: 'details/:uid',
     resolve: {recipeData: recipeResolver},
     component: DetailPageComponent,
   }
-
 ];
 
 @NgModule({

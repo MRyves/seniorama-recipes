@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+    <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input type="email" matInput formControlName="email" required>
+        <mat-error *ngIf="loginForm.controls.email.invalid">Bitte gib eine gültige E-Mail an</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Passwort</mat-label>
+        <input type="password" matInput formControlName="password" required>
+        <mat-error *ngIf="loginForm.controls.password.invalid">Bitte gib dein Passwort ein</mat-error>
+    </mat-form-field>
+    <button mat-raised-button class="w-full" color="primary" type="submit" [disabled]="loginForm.invalid">
+        {{(isLoading | async) ? '...' : 'Login'}}
+    </button>
+    <mat-error *ngIf="loginError$ | async">{{loginError$ | async}}</mat-error>
+</form>

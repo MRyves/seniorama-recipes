@@ -11,6 +11,9 @@ import RecipeModel from "../../../models/Recipe.model";
 export class RecipeListComponent {
 
   @Input({required: true})
+  isLoggedIn: boolean = false;
+
+  @Input({required: true})
   recipes: RecipeModel[] = [];
 
   @Output()

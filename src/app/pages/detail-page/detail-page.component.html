@@ -1,2 +1,3 @@
 <app-recipe-detail *ngIf="recipe$ | async" [recipe]="(recipe$ | async)!"
-                   (methodChanged)="updateRecipe($event)" (editRecipeClick)="editRecipe($event)"></app-recipe-detail>
+                   (methodChanged)="updateRecipe($event)" (editRecipeClick)="editRecipe($event)"
+                   [isLoggedIn]="(isLoggedIn$ | async)!"></app-recipe-detail>

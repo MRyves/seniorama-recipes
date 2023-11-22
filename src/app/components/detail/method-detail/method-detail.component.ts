@@ -9,6 +9,9 @@ import RecipeModel from "../../../models/Recipe.model";
 })
 export class MethodDetailComponent {
 
+  @Input()
+  disableEdit = false;
+
   @Input({required: true})
   methodHtml: string = "";
 
@@ -25,14 +28,18 @@ export class MethodDetailComponent {
   }
 
   startEdit() {
-    this.methodHtmlEdit = this.methodHtml;
-    this.editMode = true;
+    if (!this.disableEdit) {
+      this.methodHtmlEdit = this.methodHtml;
+      this.editMode = true;
+    }
   }
 
   saveEdit() {
-    this.methodChanged.emit(this.methodHtmlEdit);
-    this.methodHtml = this.methodHtmlEdit;
-    this.editMode = false;
+    if (!this.disableEdit) {
+      this.methodChanged.emit(this.methodHtmlEdit);
+      this.methodHtml = this.methodHtmlEdit;
+      this.editMode = false;
+    }
   }
 
   cancelEdit() {

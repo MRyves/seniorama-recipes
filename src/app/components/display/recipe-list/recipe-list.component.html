@@ -1,5 +1,5 @@
 <section id="recipe-list" class="text-md">
   <mat-accordion displayMode="flat">
-    <app-recipe-panel *ngFor="let recipe of recipes" [recipe]="recipe" (deleteRecipe)="deleteRecipe.emit($event)"></app-recipe-panel>
+    <app-recipe-panel *ngFor="let recipe of recipes" [recipe]="recipe" [isLoggedIn]="isLoggedIn" (deleteRecipe)="deleteRecipe.emit($event)"></app-recipe-panel>
   </mat-accordion>
 </section>

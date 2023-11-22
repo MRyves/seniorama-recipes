@@ -32,7 +32,7 @@
     </div>
   </div>
   <mat-action-row>
-    <button mat-raised-button color="warn" (click)="deleteRecipe.emit(recipe.uid)">Löschen</button>
+    <button *ngIf="isLoggedIn" mat-raised-button color="warn" (click)="onDeleteRecipe(recipe.uid!)">Löschen</button>
     <button mat-raised-button color="primary" [routerLink]="['details', recipe.uid]">Details</button>
   </mat-action-row>
 </mat-expansion-panel>
