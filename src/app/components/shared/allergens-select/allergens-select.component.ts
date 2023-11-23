@@ -4,10 +4,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 const ALL_ALLERGENS: Allergen[] = [
   "Eier",
-  "Erdnüsse",
+  "Erdnuss",
   "Fische",
   "Gluten",
-  "Hausgrillpulver",
   "Krebstiere",
   "Laktose",
   "Lupinen",

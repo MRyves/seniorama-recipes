@@ -6,8 +6,9 @@
     <a class="app-name mat-headline-6 !mb-0" routerLink="">Rezepte im Seniorama</a>
     <div class="flex-1"></div>
     <a *ngIf="!user" class="mat-subtitle-2 !mb-0" routerLink="login">Login</a>
-    <button mat-flat-button color="primary" [matMenuTriggerFor]="menu" *ngIf="user"
-            class="mat-subtitle-2 !mb-0">{{user.email}}</button>
+    <button mat-flat-button class="!h-fit !w-fit !rounded-full !bg-gray-400" [matMenuTriggerFor]="menu" *ngIf="user">
+      <app-profile-avatar></app-profile-avatar>
+    </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="logoutClick.emit()">Logout</button>
     </mat-menu>

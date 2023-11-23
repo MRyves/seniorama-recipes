@@ -6,7 +6,7 @@ export type Allergen =
   "Krebstiere" |
   "Eier" |
   "Fische" |
-  "Erdnüsse" |
+  "Erdnuss" |
   "Soja" |
   "Laktose" |
   "Nüsse" |
@@ -15,8 +15,7 @@ export type Allergen =
   "Sesam" |
   "Sulfite" |
   "Lupinen" |
-  "Weichtiere" |
-  "Hausgrillpulver";
+  "Weichtiere";
 
 export default interface RecipeModel {
   readonly uid?: string;
