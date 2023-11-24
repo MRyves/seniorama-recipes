@@ -42,7 +42,6 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {EffectsModule} from '@ngrx/effects';
-import {environment} from "../environments/environment";
 import RecipeFormEffects from "./store/recipeForm/recipeForm.effects";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
 import {ToastrModule} from "ngx-toastr";
