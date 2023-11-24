@@ -12,6 +12,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatInput } from '@angular/material/input';
 import { map, Observable, startWith } from 'rxjs';
+import {MatFormFieldAppearance, SubscriptSizing} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-auto-chips',
@@ -36,6 +37,12 @@ export class AutoChipsComponent {
 
   @Input()
   separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  @Input()
+  subscriptionSizing: SubscriptSizing = 'fixed';
+
+  @Input()
+  appearance: MatFormFieldAppearance = 'fill';
 
   @Output()
   chipAdded = new EventEmitter<string>();

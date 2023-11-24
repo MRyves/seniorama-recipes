@@ -5,19 +5,7 @@ import {
   SubRecipeCreateDialogComponent
 } from "../sub-recipe/sub-recipe-create-dialog/sub-recipe-create-dialog.component";
 import RecipeModel, {Allergen} from "../../../models/Recipe.model";
-
-const ALL_TAGS = [
-  'Vorspeisen',
-  'Salate',
-  'Suppen',
-  'Beilagen',
-  'Fleisch',
-  'Fisch',
-  'Vegi',
-  'Pasta',
-  'Dessert',
-  'Abendessen',
-];
+import {ALL_TAGS} from "../../../models/Tags.model";
 
 @Component({
   selector: 'app-create-form',

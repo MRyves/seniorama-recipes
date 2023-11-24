@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {RecipeFilter} from "../../../models/RecipeFilter.model";
 import {FormControl, FormGroup} from "@angular/forms";
-import { debounceTime, map, Subscription} from "rxjs";
+import {debounceTime, map, Subscription} from "rxjs";
 
 
 @Component({
@@ -17,8 +17,7 @@ export class RecipeFilterComponent implements OnInit, OnDestroy {
 
   filterGroup = new FormGroup({
     name: new FormControl(''),
-    tags: new FormControl(''),
-    allergens: new FormControl([])
+    tags: new FormControl([] as string[]),
   });
 
   subscription!: Subscription;
@@ -26,10 +25,9 @@ export class RecipeFilterComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.filterGroup.valueChanges.pipe(
       debounceTime(500),
-      map(({name, tags, allergens})=> ({
+      map(({name, tags}) => ({
         name,
-        allergens,
-        tags: !!tags ? tags?.split(',').map(v => v.trim()) : [],
+        tags,
       } as RecipeFilter))
     ).subscribe(value => this.filterChange.emit(value));
   }
