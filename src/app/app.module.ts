@@ -62,17 +62,26 @@ import {DetailPageComponent} from './pages/detail-page/detail-page.component';
 import {RecipeDetailComponent} from './components/detail/recipe-detail/recipe-detail.component';
 import {AmountPortionFormComponent} from './components/detail/amount-portion-form/amount-portion-form.component';
 import {HashLocationStrategy, LocationStrategy, NgOptimizedImage} from "@angular/common";
-import { IngredientListComponent } from './components/shared/ingredient-list/ingredient-list.component';
-import { MethodDetailComponent } from './components/detail/method-detail/method-detail.component';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
-import { ExtraInfoComponent } from './components/detail/extra-info/extra-info.component';
+import {IngredientListComponent} from './components/shared/ingredient-list/ingredient-list.component';
+import {MethodDetailComponent} from './components/detail/method-detail/method-detail.component';
+import {SafeHtmlPipe} from './pipes/safe-html.pipe';
+import {ExtraInfoComponent} from './components/detail/extra-info/extra-info.component';
 import {getAuth, provideAuth} from "@angular/fire/auth";
 import {MatMenuModule} from "@angular/material/menu";
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
 import {authReducer} from "./store/auth/auth.reducers";
 import AuthEffects from "./store/auth/auth.effects";
-import { AllergenIconComponent } from './components/ui/allergen-icon/allergen-icon.component';
-import { ProfileAvatarComponent } from './components/ui/profile-avatar/profile-avatar.component';
+import {AllergenIconComponent} from './components/ui/allergen-icon/allergen-icon.component';
+import {ProfileAvatarComponent} from './components/ui/profile-avatar/profile-avatar.component';
+
+const firebaseConfig = {
+  projectId: import.meta.env['NG_APP_FIREBASE_PROJECT_ID'],
+  appId: import.meta.env['NG_APP_FIREBASE_APP_ID'],
+  storageBucket: import.meta.env['NG_APP_FIREBASE_STORAGE_BUCKET'],
+  apiKey: import.meta.env['NG_APP_FIREBASE_API_KEY'],
+  authDomain: import.meta.env['NG_APP_FIREBASE_AUTH_DOMAIN'],
+  messagingSenderId: import.meta.env['NG_APP_FIREBASE_MESSAGING_SENDER_ID'],
+}
 
 @NgModule({
   declarations: [
@@ -168,14 +177,14 @@ import { ProfileAvatarComponent } from './components/ui/profile-avatar/profile-a
     EffectsModule.forRoot([RecipeFormEffects, RecipeEffects, AuthEffects]),
 
     //firebase
-    provideFirebaseApp(() => initializeApp({...environment.firebase})),
+    provideFirebaseApp(() => initializeApp({...firebaseConfig})),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
     MatMenuModule,
     NgOptimizedImage,
   ],
   providers: [
-    {provide: FIREBASE_OPTIONS, useValue: environment.firebase},
+    {provide: FIREBASE_OPTIONS, useValue: firebaseConfig},
     {provide: LocationStrategy, useClass: HashLocationStrategy}
 
   ],
