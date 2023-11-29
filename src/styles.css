@@ -31,3 +31,7 @@ mat-form-field {
 .colored-list-items:nth-child(even) {
   @apply bg-gray-100;
 }
+
+.mat-expansion-panel {
+  --mat-expansion-container-shape: 0px !important;
+}
