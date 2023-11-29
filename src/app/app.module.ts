@@ -73,6 +73,7 @@ import AuthEffects from './store/auth/auth.effects';
 import { AllergenIconComponent } from './components/ui/allergen-icon/allergen-icon.component';
 import { ProfileAvatarComponent } from './components/ui/profile-avatar/profile-avatar.component';
 import { NgxPrintModule } from 'ngx-print';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const firebaseConfig = {
   projectId: import.meta.env['NG_APP_FIREBASE_PROJECT_ID'],
@@ -189,6 +190,12 @@ const firebaseConfig = {
     provideAuth(() => getAuth()),
     MatMenuModule,
     NgOptimizedImage,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
