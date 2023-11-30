@@ -3,7 +3,7 @@
     <mat-panel-title class="mat-body-1 !text-sm md:text-inherit !mb-0">
       {{recipe.name}}
     </mat-panel-title>
-    <mat-panel-description class="items-end mat-body-2 !text-sm md:text-inherit !mb-0">
+    <mat-panel-description class="items-end mat-body-2 !text-sm md:text-inherit !mb-0 text-right !flex-grow whitespace-nowrap">
       {{recipe.tags.join(', ') | ellipsisSlice}}
     </mat-panel-description>
   </mat-expansion-panel-header>
