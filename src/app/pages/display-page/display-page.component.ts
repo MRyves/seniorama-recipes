@@ -21,16 +21,8 @@ const checkTags = (filterTags: Nullable<string[]>, recipeTags: string[]) => {
     return true;
   }
   console.log("check tags: ", {filterTags, recipeTags});
-  const joinedRecipeTags = recipeTags.join(',');
+  const joinedRecipeTags = recipeTags.join(',').toLowerCase();
   return filterTags.some(ft => joinedRecipeTags.includes(ft));
-}
-
-const checkAllergens = (filterAllergens: Nullable<string[]>, recipeAllergens: string[]) => {
-  if (!filterAllergens || !filterAllergens.length) {
-    return true;
-  }
-  console.log("Check allergens: ", {filterAllergens, recipeAllergens});
-  return recipeAllergens.some(a => filterAllergens.includes(a));
 }
 
 @Component({
@@ -47,9 +39,8 @@ export class DisplayPageComponent {
     map(([filter, recipes]) =>
       recipes.filter(recipe => (
         checkName(filter.name, recipe.name) &&
-        checkTags(filter.tags, recipe.tags) &&
-        checkAllergens(filter.allergens, recipe.tags))
-      )),
+        checkTags(filter.tags, recipe.tags)
+      ))),
     distinctUntilChanged(),
   );
 

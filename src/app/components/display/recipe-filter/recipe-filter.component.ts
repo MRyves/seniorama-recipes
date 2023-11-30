@@ -17,7 +17,7 @@ export class RecipeFilterComponent implements OnInit, OnDestroy {
 
   filterGroup = new FormGroup({
     name: new FormControl(''),
-    tags: new FormControl([] as string[]),
+    tags: new FormControl(''),
   });
 
   subscription!: Subscription;
@@ -27,9 +27,21 @@ export class RecipeFilterComponent implements OnInit, OnDestroy {
       debounceTime(500),
       map(({name, tags}) => ({
         name,
-        tags,
+        tags: this.parseTags(tags),
       } as RecipeFilter))
     ).subscribe(value => this.filterChange.emit(value));
+  }
+
+  private parseTags(tags: Nullable<string>) {
+    if (!tags) {
+      return [];
+    }
+    return tags
+      .trim()
+      .toLowerCase()
+      .replaceAll(' ', ',')
+      .split(',')
+      .filter(i => i.length)
   }
 
   ngOnDestroy() {
