@@ -17,9 +17,18 @@
       <button
         mat-flat-button
         color="accent"
+        class="!hidden md:!inline-flex"
         [disabled]="!isLoggedIn"
         (click)="onEdit(recipe)">
         Bearbeiten
+      </button>
+      <button
+        mat-icon-button
+        color="accent"
+        class="md:!hidden"
+        [disabled]="!isLoggedIn"
+        (click)="onEdit(recipe)">
+        <mat-icon>edit</mat-icon>
       </button>
       <button
         mat-icon-button
