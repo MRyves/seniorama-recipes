@@ -10,6 +10,9 @@ import {
 import {MediaMatcher} from "@angular/cdk/layout";
 import {TitleService} from "../../../services/title.service";
 import User from "../../../models/User.model";
+import {AppState} from "../../../store/store";
+import {Store} from "@ngrx/store";
+import {fromFavorites} from "../../../store/favorites/favorites.reducer";
 
 @Component({
   selector: 'app-layout',
@@ -28,8 +31,9 @@ export class AppLayoutComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   private readonly _mobileQueryListener: () => void;
   title$ = this.titleService.currentTitle$;
+  favorites = this.store.select(fromFavorites.selectAll);
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private titleService: TitleService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private titleService: TitleService, private store: Store<AppState>) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener("change", this._mobileQueryListener);

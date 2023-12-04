@@ -77,6 +77,8 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {PromptComponent} from './components/ui/prompt/prompt.component';
 import {PwaInstallService} from "./services/pwa-install.service";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {FavoritesEffects} from "./store/favorites/favorites.effects";
+import {favoritesReducer} from "./store/favorites/favorites.reducer";
 
 const firebaseConfig = {
   projectId: import.meta.env['NG_APP_FIREBASE_PROJECT_ID'],
@@ -186,11 +188,12 @@ const initializer = (pwaService: PwaInstallService) => () => pwaService.initPwaP
         recipeForm: recipeFormReducer,
         recipes: recipeReducer,
         auth: authReducer,
+        favorites: favoritesReducer,
       },
       {}
     ),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
-    EffectsModule.forRoot([RecipeFormEffects, RecipeEffects, AuthEffects]),
+    EffectsModule.forRoot([RecipeFormEffects, RecipeEffects, AuthEffects, FavoritesEffects]),
 
     //firebase
     provideFirebaseApp(() => initializeApp({...firebaseConfig})),

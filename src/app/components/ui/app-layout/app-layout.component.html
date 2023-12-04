@@ -4,7 +4,7 @@
       <mat-icon>menu</mat-icon>
     </button>
     <a class="app-name mat-headline-6 !mb-0" routerLink=""
-      >Rezepte im Seniorama</a
+    >Rezepte im Seniorama</a
     >
     <div class="flex-1"></div>
     <a *ngIf="!user" class="mat-subtitle-2 !mb-0" routerLink="login">Login</a>
@@ -23,10 +23,16 @@
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [opened]="!mobileQuery.matches"
       [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
-      <mat-nav-list>
+      fixedTopGap="56"
+    >
+      <mat-nav-list
+        class="!text-lg md:!text-sm"
+      >
         <a mat-list-item routerLink="">Home</a>
         <a mat-list-item routerLink="create" [disabled]="!user">Erstellen</a>
+        <mat-divider></mat-divider>
+        <div class="!text-base md:!text-sm text-orange-400" mat-subheader>Favoriten:</div>
+        <a *ngFor="let fav of (favorites | async)" mat-list-item [routerLink]="['detail', fav.uid]">{{fav.name}}</a>
       </mat-nav-list>
     </mat-sidenav>
 
