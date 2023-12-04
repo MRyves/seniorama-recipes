@@ -2,10 +2,11 @@ import {Injectable} from "@angular/core";
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AuthActions} from "./auth.actions";
-import {map, switchMap} from "rxjs";
+import {map, switchMap, tap} from "rxjs";
 import {Store} from "@ngrx/store";
 import {AppState} from "../store";
 import User from "../../models/User.model";
+import {Router} from "@angular/router";
 
 @Injectable()
 export default class AuthEffects {
@@ -25,6 +26,10 @@ export default class AuthEffects {
     useEffectsErrorHandler: false
   });
 
+  loginSuccess$ = createEffect(() => this.actions.pipe(
+    ofType(AuthActions.loginSuccess),
+    tap(() => this.router.navigate(['']))
+  ), {dispatch: false});
 
   getAuthState$ = createEffect(() => this.actions.pipe(
     ofType(AuthActions.getAuthState),
@@ -44,7 +49,7 @@ export default class AuthEffects {
   ), {dispatch: false});
 
 
-  constructor(private actions: Actions, private fbAuth: AngularFireAuth, private store: Store<AppState>) {
+  constructor(private actions: Actions, private fbAuth: AngularFireAuth, private store: Store<AppState>, private router: Router) {
   }
 
 }
