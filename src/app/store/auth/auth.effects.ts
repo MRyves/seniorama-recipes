@@ -45,7 +45,7 @@ export default class AuthEffects {
 
   logout$ = createEffect(() => this.actions.pipe(
     ofType(AuthActions.logout),
-    switchMap((action) => this.fbAuth.signOut()),
+    switchMap((_) => this.fbAuth.signOut()),
   ), {dispatch: false});
 
 
