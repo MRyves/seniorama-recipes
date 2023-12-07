@@ -80,6 +80,8 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import {FavoritesEffects} from "./store/favorites/favorites.effects";
 import {favoritesReducer} from "./store/favorites/favorites.reducer";
 import { StarToggleComponent } from './components/ui/star-toggle/star-toggle.component';
+import { PasswordForgotComponent } from './pages/password-forgot/password-forgot.component';
+import { ForgotDialogComponent } from './components/forgot-dialog/forgot-dialog.component';
 
 const firebaseConfig = {
   projectId: import.meta.env['NG_APP_FIREBASE_PROJECT_ID'],
@@ -128,6 +130,8 @@ const initializer = (pwaService: PwaInstallService) => () => pwaService.initPwaP
     ProfileAvatarComponent,
     PromptComponent,
     StarToggleComponent,
+    PasswordForgotComponent,
+    ForgotDialogComponent,
   ],
   imports: [
     BrowserModule,

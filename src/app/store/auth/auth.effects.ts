@@ -19,7 +19,7 @@ export default class AuthEffects {
         return AuthActions.loginSuccess();
       } catch (err) {
         console.error('Error during login: ', err);
-        return AuthActions.loginFailure({msg: 'Login fehlgeschlagen! Überprüfe dein E-Mail & Passwrot'});
+        return AuthActions.loginFailure({msg: 'Login fehlgeschlagen! Überprüfe dein E-Mail & Passwort'});
       }
     })
   ), {
