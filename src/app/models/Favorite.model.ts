@@ -1,4 +1,5 @@
 export interface FavoriteModel {
-  readonly name: string;
+  // equal to the recipe uid!
   readonly uid: string;
+  readonly name: string;
 }

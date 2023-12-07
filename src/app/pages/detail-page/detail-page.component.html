@@ -1,3 +1,8 @@
 <app-recipe-detail *ngIf="recipe$ | async" [recipe]="(recipe$ | async)!"
-                   (methodChanged)="updateRecipe($event)" (editRecipeClick)="editRecipe($event)"
-                   [isLoggedIn]="(isLoggedIn$ | async)!"></app-recipe-detail>
+                   [isLoggedIn]="(isLoggedIn$ | async)!"
+                   [isFav]="!!(isFavorite$ | async)"
+                   (favoriteToggle)="toggleFavorite($event)"
+                   (methodChanged)="updateRecipe($event)"
+                   (editRecipeClick)="editRecipe($event)"
+
+></app-recipe-detail>

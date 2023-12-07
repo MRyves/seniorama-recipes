@@ -79,6 +79,7 @@ import {PwaInstallService} from "./services/pwa-install.service";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import {FavoritesEffects} from "./store/favorites/favorites.effects";
 import {favoritesReducer} from "./store/favorites/favorites.reducer";
+import { StarToggleComponent } from './components/ui/star-toggle/star-toggle.component';
 
 const firebaseConfig = {
   projectId: import.meta.env['NG_APP_FIREBASE_PROJECT_ID'],
@@ -126,6 +127,7 @@ const initializer = (pwaService: PwaInstallService) => () => pwaService.initPwaP
     AllergenIconComponent,
     ProfileAvatarComponent,
     PromptComponent,
+    StarToggleComponent,
   ],
   imports: [
     BrowserModule,

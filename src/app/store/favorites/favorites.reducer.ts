@@ -23,7 +23,8 @@ export const favoritesReducer = createReducer(
 const favoritesState = createFeatureSelector<FavoritesState>('favorites');
 
 export const fromFavorites = {
-  selectAll: createSelector(favoritesState, state => state.favorites)
+  selectAll: createSelector(favoritesState, state => state.favorites),
+  selectIsFavorite: (uid: string) => createSelector(favoritesState, state => !!state.favorites.find(f => f.uid === uid))
 }
 
 

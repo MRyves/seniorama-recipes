@@ -1,6 +1,6 @@
 import {Actions, createEffect, ofType} from "@ngrx/effects";
 import {FavoritesActions} from "./favorites.actions";
-import {map, mergeMap, switchMap} from "rxjs";
+import {filter, map, mergeMap, switchMap} from "rxjs";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {FavoriteModel} from "../../models/Favorite.model";
 import {Injectable} from "@angular/core";
@@ -14,8 +14,8 @@ export class FavoritesEffects {
     mergeMap(actions => actions),
     map((action) => {
       const payload = {
-        name: action.payload.doc.data().name,
         uid: action.payload.doc.id,
+        name: action.payload.doc.data().name,
       };
       switch (action.type) {
         case 'added':
@@ -23,14 +23,16 @@ export class FavoritesEffects {
         case 'removed':
           return FavoritesActions.removed({payload});
         case 'modified':
+          return false
         default:
+          console.error('Invalid action: ', {action});
           throw new Error('Invalid Action');
       }
-    })
+    }),
+    filter(Boolean)
   ))
 
   constructor(private actions: Actions, private afs: AngularFirestore) {
-
   }
 
 

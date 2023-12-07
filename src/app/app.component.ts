@@ -4,6 +4,7 @@ import {Store} from "@ngrx/store";
 import {RecipeActions} from "./store/recipe/recipe.actions";
 import {AuthActions} from "./store/auth/auth.actions";
 import {fromAuth} from "./store/auth/auth.selectors";
+import {FavoritesActions} from "./store/favorites/favorites.actions";
 
 @Component({
   selector: 'app-root',
@@ -21,9 +22,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(RecipeActions.query());
     this.store.dispatch(AuthActions.getAuthState());
+    this.store.dispatch(FavoritesActions.query());
   }
 
-    logout() {
-        this.store.dispatch(AuthActions.logout());
-    }
+  logout() {
+    this.store.dispatch(AuthActions.logout());
+  }
 }

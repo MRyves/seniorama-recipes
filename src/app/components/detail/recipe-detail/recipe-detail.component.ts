@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import RecipeModel from '../../../models/Recipe.model';
 import { AmountPortionFormType } from '../amount-portion-form/amount-portion-form.component';
+import {FavoriteModel} from "../../../models/Favorite.model";
 
 @Component({
   selector: 'app-recipe-detail',
@@ -21,11 +22,17 @@ export class RecipeDetailComponent {
   @Input({ required: true })
   recipe!: RecipeModel;
 
+  @Input({required: true})
+  isFav = false;
+
   @Output()
   methodChanged = new EventEmitter<{ uid: string; method: string }>();
 
   @Output()
   editRecipeClick = new EventEmitter<RecipeModel>();
+
+  @Output()
+  favoriteToggle = new EventEmitter<{newValue: boolean} & FavoriteModel>();
 
   amountFactor = 1;
   perPortionFactor = 1;
