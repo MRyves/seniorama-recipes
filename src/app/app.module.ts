@@ -83,6 +83,10 @@ import { StarToggleComponent } from './components/ui/star-toggle/star-toggle.com
 import { PasswordForgotComponent } from './pages/password-forgot/password-forgot.component';
 import { ForgotDialogComponent } from './components/forgot-dialog/forgot-dialog.component';
 
+import { inject } from '@vercel/analytics';
+
+inject();
+
 const firebaseConfig = {
   projectId: import.meta.env['NG_APP_FIREBASE_PROJECT_ID'],
   appId: import.meta.env['NG_APP_FIREBASE_APP_ID'],
