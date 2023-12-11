@@ -1,3 +1,4 @@
-<div class="allergen-icon-wrapper">
+<div class="allergen-icon-wrapper" [matTooltip]="allergen" #tooltip="matTooltip" (click)="onClick()">
   <img class="allergen-icon" [ngSrc]="imgSource" [alt]="allergen" width="30" height="30">
+  <span *ngIf="showText" class="ml-0.5">{{allergen}}</span>
 </div>

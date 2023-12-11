@@ -24,7 +24,10 @@
       </div>
       <div class="flex flex-row gap-2">
         <div class="font-medium">Allergene:</div>
-        <div>{{recipe.allergens.join(', ')}}</div>
+        <div>
+          <app-allergen-icon *ngFor="let allergen of recipe.allergens" [showText]="true" [allergen]="allergen" [showTooltipOnClick]="true">
+          </app-allergen-icon>
+        </div>
       </div>
       <div class="pt-3">
         <app-ingredient-list [ingredients]="recipe.ingredients" [subRecipes]="recipe.subRecipe"></app-ingredient-list>

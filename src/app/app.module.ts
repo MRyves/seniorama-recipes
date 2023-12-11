@@ -84,6 +84,7 @@ import { PasswordForgotComponent } from './pages/password-forgot/password-forgot
 import { ForgotDialogComponent } from './components/forgot-dialog/forgot-dialog.component';
 
 import { inject } from '@vercel/analytics';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 inject();
 
@@ -217,6 +218,7 @@ const initializer = (pwaService: PwaInstallService) => () => pwaService.initPwaP
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    MatTooltipModule,
   ],
   providers: [
     {provide: FIREBASE_OPTIONS, useValue: firebaseConfig},
