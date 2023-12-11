@@ -7,6 +7,7 @@ export const RecipeFormActions = createActionGroup({
     'Update': props<{ changes: Partial<RecipeModel> }>(),
     'Reset': emptyProps(),
     'Save': emptyProps(),
+    'Start edit recipe': props<{recipeUid: string}>(),
     'Edit Recipe': props<{ recipe: RecipeModel }>(),
   }
 });

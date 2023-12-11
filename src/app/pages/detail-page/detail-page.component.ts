@@ -43,7 +43,7 @@ export class DetailPageComponent implements OnInit {
   }
 
   editRecipe(recipe: RecipeModel) {
-    this.store.dispatch(RecipeFormActions.editRecipe({recipe}));
+    this.store.dispatch(RecipeFormActions.startEditRecipe({recipeUid: recipe.uid!}));
     this.router.navigate(['edit', recipe.uid])
   }
 

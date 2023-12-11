@@ -6,6 +6,7 @@ import {map, switchMap, tap, withLatestFrom} from "rxjs";
 import {AppState} from "../store";
 import {RecipeService} from "../../services/recipe.service";
 import {Router} from "@angular/router";
+import {selectAll} from "../recipe/recipe.reducer";
 
 @Injectable()
 export default class RecipeFormEffects {
@@ -20,6 +21,19 @@ export default class RecipeFormEffects {
       }
     }),
     map(() => (RecipeFormActions.reset()))
+  ));
+
+  startEdit$ = createEffect(() => this.actions$.pipe(
+    ofType(RecipeFormActions.startEditRecipe),
+    withLatestFrom(this.store$.select(selectAll)),
+    map(([action, store]) => {
+      const recipe = store.find(r => r.uid === action.recipeUid);
+      if (recipe) {
+        return RecipeFormActions.editRecipe({recipe});
+      }
+      console.error('Failed to edit Recipe, id not found in store: ', action.recipeUid);
+      throw new Error('Something went wrong, please try again');
+    })
   ));
 
   constructor(private actions$: Actions,
