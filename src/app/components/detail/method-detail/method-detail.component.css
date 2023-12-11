@@ -1,4 +1,7 @@
 .header-image {
   background-image: url('/assets/cook.svg');
   background-size: cover;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+
 }

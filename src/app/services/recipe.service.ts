@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RecipeService {
   private recipeCollection = this.ngf.collection('recipes');
+  private favoritesCollection = this.ngf.collection('favorites');
 
   constructor(
     private ngf: AngularFirestore,
@@ -32,6 +33,7 @@ export class RecipeService {
   async delete(recipeUid: string) {
     try {
       await this.recipeCollection.doc(recipeUid).delete();
+      await this.favoritesCollection.doc(recipeUid).delete();
       this.toast.success('Rezept gelöscht!');
     } catch (e) {
       this.toast.error('Fehler beim löschen des Rezeptes');
