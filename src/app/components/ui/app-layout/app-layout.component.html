@@ -27,6 +27,7 @@
     >
       <mat-nav-list
         class="!text-lg md:!text-sm"
+        (click)="clickOnSideNavLink()"
       >
         <a mat-list-item routerLink="">Home</a>
         <a mat-list-item routerLink="create" [disabled]="!user">Erstellen</a>

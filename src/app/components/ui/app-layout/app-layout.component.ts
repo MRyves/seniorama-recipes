@@ -5,7 +5,7 @@ import {
   EventEmitter,
   Input,
   OnDestroy,
-  Output
+  Output, ViewChild
 } from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
 import {TitleService} from "../../../services/title.service";
@@ -13,6 +13,7 @@ import User from "../../../models/User.model";
 import {AppState} from "../../../store/store";
 import {Store} from "@ngrx/store";
 import {fromFavorites} from "../../../store/favorites/favorites.reducer";
+import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-layout',
@@ -27,6 +28,9 @@ export class AppLayoutComponent implements OnDestroy {
 
   @Output()
   logoutClick = new EventEmitter<never>();
+
+  @ViewChild('snav', {static: true})
+  snavRef!: MatSidenav;
 
   mobileQuery: MediaQueryList;
   private readonly _mobileQueryListener: () => void;
@@ -43,4 +47,9 @@ export class AppLayoutComponent implements OnDestroy {
     this.mobileQuery.removeEventListener("change", this._mobileQueryListener);
   }
 
+  clickOnSideNavLink() {
+    if(this.mobileQuery.matches){
+      this.snavRef.toggle();
+    }
+  }
 }
