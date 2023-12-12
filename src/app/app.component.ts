@@ -5,6 +5,7 @@ import {RecipeActions} from "./store/recipe/recipe.actions";
 import {AuthActions} from "./store/auth/auth.actions";
 import {fromAuth} from "./store/auth/auth.selectors";
 import {FavoritesActions} from "./store/favorites/favorites.actions";
+import {PromptUpdateService} from "./services/update.service";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
 
   currentUser$ = this.store.select(fromAuth.currentUser);
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private updateService: PromptUpdateService) {
   }
 
   ngOnInit() {
