@@ -52,4 +52,9 @@ export class DetailPageComponent implements OnInit {
       this.favoriteService.add({uid, name} as FavoriteModel) :
       this.favoriteService.delete(uid)
   }
+
+  deleteRecipe(recipeUid: string) {
+    this.recipeService.delete(recipeUid);
+    this.router.navigate(['/']);
+  }
 }

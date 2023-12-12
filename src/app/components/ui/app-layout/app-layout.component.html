@@ -31,7 +31,7 @@
         <a mat-list-item routerLink="">Home</a>
         <a mat-list-item routerLink="create" [disabled]="!user">Erstellen</a>
         <mat-divider></mat-divider>
-        <div class="!text-base md:!text-sm text-orange-400" mat-subheader>Favoriten:</div>
+        <div class="!text-base md:!text-sm text-[#b8a3d3]" mat-subheader>Favoriten:</div>
         <a *ngFor="let fav of (favorites | async)" mat-list-item [routerLink]="['details', fav.uid]">{{fav.name}}</a>
       </mat-nav-list>
     </mat-sidenav>

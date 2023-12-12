@@ -19,10 +19,17 @@
       <button
         mat-flat-button
         color="accent"
-        class="!hidden md:!inline-flex"
         [disabled]="!isLoggedIn"
         (click)="onEdit(recipe)">
         Bearbeiten
+      </button>
+      <button
+        mat-icon-button
+        color="warn"
+        [disabled]="!isLoggedIn"
+        (click)="delete(recipe)"
+        >
+        <mat-icon>delete</mat-icon>
       </button>
       <button
         mat-icon-button
@@ -34,7 +41,7 @@
       </button>
     </div>
   </div>
-  <div class="md:hidden flex-col justify-between">
+  <div class="md:hidden flex flex-col justify-between">
     <div class="flex flex-col w-full">
       <span class="block mat-headline-6 !leading-none !mb-0 whitespace-nowrap">
         {{ recipe.name }}
@@ -56,10 +63,17 @@
         <button
           mat-icon-button
           color="accent"
-          class="md:!hidden"
           [disabled]="!isLoggedIn"
           (click)="onEdit(recipe)">
           <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          [disabled]="!isLoggedIn"
+          (click)="delete(recipe)"
+        >
+          <mat-icon>delete</mat-icon>
         </button>
         <button
           mat-icon-button
